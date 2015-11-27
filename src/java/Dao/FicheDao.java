@@ -5,15 +5,14 @@
  */
 package Dao;
 
-import Metier.Rdv;
-import java.util.List;
+import Metier.Fiche;
 
 /**
  *
  * @author soukaina
  */
-public interface RdvDao  {
-        List<Rdv> findAllRdvByIdMedecin(int id_utilisateur);
-        
+public interface FicheDao {
+    Fiche findFicheByIdMedecinAndIdPatient(int id_utilisateur_medecin,int id_utilisateur_patient);
+    
     
 }

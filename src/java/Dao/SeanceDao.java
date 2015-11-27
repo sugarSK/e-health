@@ -5,15 +5,17 @@
  */
 package Dao;
 
-import Metier.Rdv;
+import Metier.Seance;
 import java.util.List;
 
 /**
  *
  * @author soukaina
  */
-public interface RdvDao  {
-        List<Rdv> findAllRdvByIdMedecin(int id_utilisateur);
-        
+public interface SeanceDao  {
+    void SaveCompteRenduSeance(Seance seance);
+    void UpdateCompteRenduSeance(Seance seance);
+    List<Seance> fndAllCompteRenduSeanceByIdFiche(int id_fiche);
+           
     
 }

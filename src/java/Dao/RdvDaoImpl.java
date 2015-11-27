@@ -14,10 +14,10 @@ import org.hibernate.Criteria;
  *
  * @author soukaina
  */
-public class RdvDaoImpl extends AbstractDao<Integer, Utilisateur> implements RdvDao{
+public class RdvDaoImpl extends AbstractDao<Integer, Rdv> implements RdvDao{
 
     @Override
-    public List<Rdv> findAllRdv() {
+    public List<Rdv> findAllRdvByIdMedecin(int id_utilisateur) {
            Criteria criteria = getSession().createCriteria(Utilisateur.class);
         return (List<Rdv>) criteria.list();
     }

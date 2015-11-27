@@ -54,7 +54,7 @@ public class UtilisateurDaoImpl  extends AbstractDao<Integer, Utilisateur> imple
     }
 
     @Override
-    public Utilisateur findById(String id_utilisateur)
+    public Utilisateur findUtilisateurById(String id_utilisateur)
     {
         Session s = getSession();
         s.beginTransaction();

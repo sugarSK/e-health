@@ -22,6 +22,6 @@ public interface UtilisateurDao {
      
     Utilisateur findByCompte(String login,String passsword);
     
-    Utilisateur findById(String id_utilisateur);
+    Utilisateur findUtilisateurById(String id_utilisateur);
     
 }
