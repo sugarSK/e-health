@@ -9,6 +9,7 @@ import Metier.Seance;
 import Metier.Utilisateur;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 
 /**
  *
@@ -18,14 +19,21 @@ public class SeanceDaoImpl extends AbstractDao<Integer, Seance> implements Seanc
 
     @Override
     public void SaveCompteRenduSeance(Seance seance) {
-                persist(seance);
+        Session s = getSession();
+        s.beginTransaction();
+        s.save(seance);
+        s.getTransaction().commit();
+        s.close();
 
     }
 
     @Override
     public void UpdateCompteRenduSeance(Seance seance) {
-                getSession().update(seance);
-
+        Session s = getSession();
+        s.beginTransaction();
+        s.update(seance);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override

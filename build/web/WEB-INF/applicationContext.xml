@@ -24,11 +24,11 @@
                 <value>Metier.Medecin</value>
                 <value>Metier.Secretaire</value>
                 <value>Metier.Patient</value>
-                 <value>Metier.Admin</value>
+                <value>Metier.Admin</value>
                 <value>Metier.Fiche</value>
                 <value>Metier.Rdv</value>
-                 <value>Metier.Seance</value>
-                 <value>Metier.Specialite</value>
+                <value>Metier.Seance</value>
+                <value>Metier.Specialite</value>
               
             </list>
         </property>
