@@ -27,8 +27,7 @@ public class Admin implements Serializable {
     private String login;
     private String password;
     
-    private List<Medecin> medecina;
-    private List<Secretaire> secretaires;
+   
    @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="id_admin" ,unique = true,nullable = false)
@@ -39,23 +38,8 @@ public class Admin implements Serializable {
     public void setId_admin(int id_admin) {
         this.id_admin = id_admin;
     }
-@OneToMany(mappedBy = "admin")
-    public List<Medecin> getMedecina() {
-        return medecina;
-    }
 
-    public void setMedecina(List<Medecin> medecina) {
-        this.medecina = medecina;
-    }
- @OneToMany(mappedBy = "admin")
-
-    public List<Secretaire> getSecretaires() {
-        return secretaires;
-    }
-
-    public void setSecretaires(List<Secretaire> secretaires) {
-        this.secretaires = secretaires;
-    }
+   
 @Column(name="login")
     public String getLogin() {
         return login;
@@ -76,8 +60,10 @@ public class Admin implements Serializable {
 
     @Override
     public String toString() {
-        return "Admin{" + "id_admin=" + id_admin + ", medecina=" + medecina + ", secretaires=" + secretaires + '}';
+        return "Admin{" + "id_admin=" + id_admin + ", login=" + login + ", password=" + password + '}';
     }
+
+  
     
     
 }
