@@ -26,14 +26,22 @@ public class testController {
     @ResponseBody
     public String test()
     {
-        Admin admin = new Admin();
-        admin.setId_admin(3);
-        admin.setLogin("");
-        admin.setPassword("root");
+        Admin admin_1 = new Admin();
+        admin_1.setLogin("ROOT");
+        admin_1.setPassword("ROOT");
         
-        service.deleteAdmin(admin);
-        admin.setLogin("ROOT");
-        service.saveAdmin(admin);
-        return admin.toString();
+        Admin admin_2 = new Admin();
+        admin_2.setLogin("admin");
+        admin_2.setPassword("kjhkjhkjhkh");
+        
+        service.saveAdmin(admin_1);
+        service.saveAdmin(admin_2);
+        
+        admin_2.setPassword("admin");
+        service.updateAdmin(admin_2);
+        
+        service.deleteAdmin(admin_1);
+        
+        return admin_1.toString();
     }
 }
