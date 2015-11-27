@@ -10,10 +10,10 @@ import Metier.Admin;
  * @author PC
  */
 public interface AdminDao {
-    void saveUtilisateur(Admin admin);
+    void saveAdmin(Admin admin);
      
-    void updateUtilisateur(Admin admin);
+    void updateAdmin(Admin admin);
      
-    void deleteUtilisateur(Admin admin);
+    void deleteAdmin(Admin admin);
 
 }

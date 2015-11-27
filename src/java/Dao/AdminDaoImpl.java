@@ -6,6 +6,7 @@
 package Dao;
 import Dao.AbstractDao;
 import Metier.Admin;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 /**
  *
@@ -15,18 +16,30 @@ import org.springframework.stereotype.Repository;
 public class AdminDaoImpl extends AbstractDao<Integer, Admin> implements AdminDao{
 
     @Override
-    public void saveUtilisateur(Admin admin) {
-        getSession().save(admin);
+    public void saveAdmin(Admin admin) {
+        Session s = getSession();
+        s.beginTransaction();
+        s.save(admin);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override
-    public void updateUtilisateur(Admin admin) {
-        getSession().update(admin);
+    public void updateAdmin(Admin admin) {
+        Session s = getSession();
+        s.beginTransaction();
+        s.update(admin);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override
-    public void deleteUtilisateur(Admin admin) {
-        getSession().delete(admin);
+    public void deleteAdmin(Admin admin) {
+        Session s = getSession();
+        s.beginTransaction();
+        s.delete(admin);
+        s.getTransaction().commit();
+        s.close();
     }
     
 }

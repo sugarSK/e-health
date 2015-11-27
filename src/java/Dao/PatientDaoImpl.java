@@ -20,7 +20,7 @@ public class PatientDaoImpl extends AbstractDao<Integer, Patient> implements Pat
 
     @Override
     public Patient findPatientById(String id_utilisateur) {
-           Session s = getSession();
+        Session s = getSession();
         s.beginTransaction();
         Criteria criteria = s.createCriteria(Patient.class);
         criteria.add(Restrictions.eq("id_utilisateur",id_utilisateur));

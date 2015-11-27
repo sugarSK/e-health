@@ -27,11 +27,13 @@ public class testController {
     public String test()
     {
         Admin admin = new Admin();
-        admin.setId_admin(1);
-        admin.setLogin("admin");
-        admin.setPassword("admin");
+        admin.setId_admin(3);
+        admin.setLogin("");
+        admin.setPassword("root");
         
-        service.saveUtilisateur(admin);
+        service.deleteAdmin(admin);
+        admin.setLogin("ROOT");
+        service.saveAdmin(admin);
         return admin.toString();
     }
 }

@@ -18,17 +18,24 @@ import org.springframework.stereotype.Repository;
  * @author soukaina
  */
 @Repository("utilisateurDao")
-
 public class UtilisateurDaoImpl  extends AbstractDao<Integer, Utilisateur> implements UtilisateurDao {
 
       @Override
     public void updateUtilisateur(Utilisateur Utilisateur){
-        getSession().update(Utilisateur);
+        Session s = getSession();
+        s.beginTransaction();
+        s.update(Utilisateur);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override
     public void saveUtilisateur(Utilisateur Utilisateur) {
-        persist(Utilisateur);
+        Session s = getSession();
+        s.beginTransaction();
+        s.persist(Utilisateur);
+        s.getTransaction().commit();
+        s.close();
     }
  
   
