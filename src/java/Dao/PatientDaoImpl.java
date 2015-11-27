@@ -34,19 +34,28 @@ public class PatientDaoImpl extends AbstractDao<Integer, Patient> implements Pat
 
     @Override
     public void savePatient(Patient patient) {
-          persist(patient);
+          Session s = getSession();
+        s.beginTransaction();
+        s.save(patient);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override
     public void updatePatient(Patient patient) {
-         getSession().update(patient);
-    }
+   Session s = getSession();
+        s.beginTransaction();
+        s.update(patient);
+        s.getTransaction().commit();
+        s.close();    }
 
     @Override
     public void deletePatient(Patient patient) {
-             Query query = getSession().createSQLQuery("delete from Patient where id_utilisateur = :identifiant")
-            .setParameter("identifiant", patient.getId_utilisateur());
-        query.executeUpdate();
+           Session s = getSession();
+        s.beginTransaction();
+        s.delete(patient);
+        s.getTransaction().commit();
+        s.close();
     }
     
 }
