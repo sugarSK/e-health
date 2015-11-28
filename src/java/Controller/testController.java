@@ -158,19 +158,19 @@ public class testController {
         fiche1.setPatient(patient);
         serviceFiche.deleteFiche(fiche1);
 //        */
-        Patient patient2 = new Patient();
-        patient2.setNom("mazzi");
-        patient2.setPrenom("meryem");
-        patient2.setAdresse("khribga");
-        patient2.setDate_naissance("03-12-1992");
-        patient2.setLogin("mimi");
-        patient2.setPassword("mimi");
-        patient2.setNumero_telephone("098765456");
-        patient2.setMaladie("deperssion");
-        servicePatient.savePatient(patient2);
+//        Patient patient2 = new Patient();
+//        patient2.setNom("mazzi");
+//        patient2.setPrenom("meryem");
+//        patient2.setAdresse("khribga");
+//        patient2.setDate_naissance("03-12-1992");
+//        patient2.setLogin("mimi");
+//        patient2.setPassword("mimi");
+//        patient2.setNumero_telephone("098765456");
+//        patient2.setMaladie("deperssion");
+//        servicePatient.savePatient(patient2);
 
         Medecin medecin = serviceMedecin.findMedecinById(4);
-        Fiche fiche2 = serviceFiche.findFicheByIdMedecinAndIdPatient(medecin,patient2);
+        //Fiche fiche2 = serviceFiche.findFicheByIdMedecinAndIdPatient(medecin,patient2);
 //        Seance seance = new Seance();
 //        seance.setCompte_rendu("compte");
 //        seance.setDate("03-09-1993");
