@@ -51,7 +51,7 @@ public class Specialite  implements Serializable {
     public void setIntitule(String intitule) {
         this.intitule = intitule;
     }
-@OneToMany(mappedBy = "specialite")
+    @OneToMany(mappedBy = "specialite",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public List<Medecin> getMedecins() {
         return medecins;
     }
@@ -59,8 +59,8 @@ public class Specialite  implements Serializable {
     public void setMedecins(List<Medecin> medecins) {
         this.medecins = medecins;
     }
-@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JoinColumn(name="id_admin")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="id_admin")
     public Admin getAdmin() {
         return admin;
     }

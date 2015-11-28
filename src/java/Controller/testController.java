@@ -157,8 +157,8 @@ public class testController {
         fiche1.setMedecin(medecin);
         fiche1.setPatient(patient);
         serviceFiche.deleteFiche(fiche1);
-        
-         Patient patient2 = new Patient();
+//        */
+        Patient patient2 = new Patient();
         patient2.setNom("mazzi");
         patient2.setPrenom("meryem");
         patient2.setAdresse("khribga");
@@ -167,23 +167,22 @@ public class testController {
         patient2.setPassword("mimi");
         patient2.setNumero_telephone("098765456");
         patient2.setMaladie("deperssion");
-        servicePatient.savePatient(patient2);*/
+        servicePatient.savePatient(patient2);
 
-        Medecin medecin = serviceMedecin.findMedecinById(2);
-        Patient patient= servicePatient.findPatientById(1);
-        Fiche fiche2=serviceFiche.findFicheByIdMedecinAndIdPatient(medecin,patient);
-        Seance seance = new Seance();
-        seance.setCompte_rendu("compte");
-        seance.setDate("03-09-1993");
-        seance.setFiche(fiche2);
-        seance.setMedecin(medecin);
-        seance.setMedicament("doliprane");
-        serviceSEance.SaveCompteRenduSeance(seance);
-          
-           List<Seance> scs=serviceSEance.fndAllCompteRenduSeanceByIdFiche(fiche2);
-                 for(Seance r : scs){
-                     System.out.println(r.getMedicament());
-                 }
-        return fiche2.toString();
+        Medecin medecin = serviceMedecin.findMedecinById(4);
+        Fiche fiche2 = serviceFiche.findFicheByIdMedecinAndIdPatient(medecin,patient2);
+//        Seance seance = new Seance();
+//        seance.setCompte_rendu("compte");
+//        seance.setDate("03-09-1993");
+//        seance.setFiche(fiche2);
+//        seance.setMedecin(medecin);
+//        seance.setMedicament("doliprane");
+//        serviceSEance.SaveCompteRenduSeance(seance);
+//          
+//           List<Seance> scs=serviceSEance.fndAllCompteRenduSeanceByIdFiche(1);
+//                 for(Seance r : scs){
+//                     System.out.println(r.getMedicament());
+//                 }
+        return medecin.toString();
     }
 }

@@ -36,7 +36,7 @@ public class PatientDaoImpl extends AbstractDao<Integer, Patient> implements Pat
 
     @Override
     public void savePatient(Patient patient) {
-          Session s = getSession();
+        Session s = getSession();
         s.beginTransaction();
         s.save(patient);
         s.getTransaction().commit();
@@ -45,15 +45,16 @@ public class PatientDaoImpl extends AbstractDao<Integer, Patient> implements Pat
 
     @Override
     public void updatePatient(Patient patient) {
-   Session s = getSession();
+        Session s = getSession();
         s.beginTransaction();
         s.update(patient);
         s.getTransaction().commit();
-        s.close();    }
+        s.close();    
+    }
 
     @Override
     public void deletePatient(Patient patient) {
-           Session s = getSession();
+        Session s = getSession();
         s.beginTransaction();
         s.delete(patient);
         s.getTransaction().commit();

@@ -20,7 +20,7 @@ public class MedecinDaoImpl extends AbstractDao<Integer, Medecin> implements Med
 
     @Override
     public Medecin findMedecinById(int id_utilisateur) {
-            Session s = getSession();
+        Session s = getSession();
         s.beginTransaction();
         Criteria criteria = s.createCriteria(Medecin.class);
         criteria.add(Restrictions.eq("id_utilisateur",id_utilisateur));
@@ -32,7 +32,7 @@ public class MedecinDaoImpl extends AbstractDao<Integer, Medecin> implements Med
 
     @Override
     public void saveMedecin(Medecin medecin) {
-         Session s = getSession();
+        Session s = getSession();
         s.beginTransaction();
         s.save(medecin);
         s.getTransaction().commit();
@@ -41,7 +41,7 @@ public class MedecinDaoImpl extends AbstractDao<Integer, Medecin> implements Med
 
     @Override
     public void updateMedecin(Medecin medecin) {
-         Session s = getSession();
+        Session s = getSession();
         s.beginTransaction();
         s.update(medecin);
         s.getTransaction().commit();
@@ -50,7 +50,7 @@ public class MedecinDaoImpl extends AbstractDao<Integer, Medecin> implements Med
 
     @Override
     public void deleteMedecin(Medecin Medecin) {
-         Session s = getSession();
+        Session s = getSession();
         s.beginTransaction();
         s.delete(Medecin);
         s.getTransaction().commit();

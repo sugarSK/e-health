@@ -5,7 +5,6 @@
  */
 package Dao;
 
-import Metier.Fiche;
 import Metier.Seance;
 import Metier.Utilisateur;
 import java.util.List;
@@ -40,7 +39,7 @@ public class SeanceDaoImpl extends AbstractDao<Integer, Seance> implements Seanc
     }
 
     @Override
-    public List<Seance> fndAllCompteRenduSeanceByIdFiche(Fiche fiche) {
+    public List<Seance> fndAllCompteRenduSeanceByIdFiche(int id_fiche) {
                    Criteria criteria = getSession().createCriteria(Seance.class);
         return (List<Seance>) criteria.list();
     }

@@ -51,13 +51,13 @@ import javax.persistence.Table;
     public void setSeances(List<Seance> seances) {
         this.seances = seances;
     }
-@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-@JoinColumn(name="id_admin")
-public Admin getAdmin() {
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="id_admin")
+    public Admin getAdmin() {
         return admin;
     }
 
-@OneToMany(mappedBy = "medecin")   
+    @OneToMany(mappedBy = "medecin")   
     public List<Fiche> getFiches() {
         return fiches;
     }
