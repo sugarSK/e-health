@@ -19,6 +19,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -31,19 +33,20 @@ import javax.persistence.Table;
     private List<Seance> seances;
     private List<Fiche> fiches;
     private List<Secretaire> secretaires;
-    private List<Rdv> rdvs;
     private Admin admin;
      
-  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JoinColumn(name="id_specialite")  
-  public Specialite getSpecialite() {
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="id_specialite")  
+    @LazyCollection(LazyCollectionOption.FALSE)
+    public Specialite getSpecialite() {
         return specialite;
     }
 
     public void setSpecialite(Specialite specialite) {
         this.specialite = specialite;
     }
-    @OneToMany(mappedBy ="medecin")
+    @OneToMany(mappedBy ="medecin", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<Seance> getSeances() {
         return seances;
     }
@@ -51,13 +54,15 @@ import javax.persistence.Table;
     public void setSeances(List<Seance> seances) {
         this.seances = seances;
     }
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name="id_admin")
     public Admin getAdmin() {
         return admin;
     }
 
-    @OneToMany(mappedBy = "medecin")   
+    @OneToMany(mappedBy = "medecin", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<Fiche> getFiches() {
         return fiches;
     }
@@ -69,7 +74,8 @@ import javax.persistence.Table;
     public void setAdmin(Admin admin) {
         this.admin = admin;
     }
-@OneToMany(mappedBy = "medecin")   
+    @OneToMany(mappedBy = "medecin",cascade = CascadeType.ALL)   
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<Secretaire> getSecretaires() {
         return secretaires;
     }
@@ -77,20 +83,9 @@ import javax.persistence.Table;
     public void setSecretaires(List<Secretaire> secretaires) {
         this.secretaires = secretaires;
     }
-@OneToMany(mappedBy = "medecin")
-    public List<Rdv> getRdvs() {
-        return rdvs;
-    }
-
-    public void setRdvs(List<Rdv> rdvs) {
-        this.rdvs = rdvs;
-    }
 
     @Override
     public String toString() {
-        return "Medecin{" + "specialite=" + specialite + ", seances=" + seances + ", fiches=" + fiches + ", secretaires=" + secretaires + ", rdvs=" + rdvs + ", admin=" + admin + '}';
-    }
-
-    
-    
+        return "Medecin{" + "specialite=" + specialite + ", seances=" + seances + ", fiches=" + fiches + ", secretaires=" + secretaires + ", admin=" + admin + '}';
+    } 
 }
