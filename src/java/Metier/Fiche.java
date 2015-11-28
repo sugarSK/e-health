@@ -61,7 +61,7 @@ public class Fiche implements Serializable{
         this.medecin = medecin;
     }
 
-    @OneToMany(mappedBy = "fiche")
+    @OneToMany(mappedBy = "fiche",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public List<Seance> getSeances() {
         return seances;
     }
@@ -72,9 +72,7 @@ public class Fiche implements Serializable{
 
     @Override
     public String toString() {
-        return "Fiche{" + "id_fiche=" + id_fiche + ", patient=" + patient + ", medecin=" + medecin + '}';
+        return "Fiche{" + "id_fiche=" + id_fiche + ", patient=" + patient + ", medecin=" + medecin + ", seances=" + seances + '}';
     }
-    
-    
-    
+
 }

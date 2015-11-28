@@ -6,17 +6,11 @@
 package Metier;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,7 +23,6 @@ public class Specialite  implements Serializable {
     
     private int id_specialite;
     private String intitule;
-    private Admin admin;
     
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
@@ -50,21 +43,10 @@ public class Specialite  implements Serializable {
     public void setIntitule(String intitule) {
         this.intitule = intitule;
     }
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_admin")
-    public Admin getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
-    }
 
     @Override
     public String toString() {
-        return "Specialite{" + "id_specialite=" + id_specialite + ", intitule=" + intitule + ", admin=" + admin + '}';
+        return "Specialite{" + "id_specialite=" + id_specialite + ", intitule=" + intitule + '}';
     }
-    
-    
-    
+
 }

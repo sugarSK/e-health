@@ -30,7 +30,6 @@ public class Seance implements Serializable{
     private String compte_rendu;
     private String medicament;
     private Fiche fiche;
-    private Medecin medecin;
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="id_seance" ,unique = true,nullable = false)
@@ -58,8 +57,8 @@ public class Seance implements Serializable{
     public void setCompte_rendu(String compte_rendu) {
         this.compte_rendu = compte_rendu;
     }
-@Column(name="medicament")
-
+    
+    @Column(name="medicament")
     public String getMedicament() {
         return medicament;
     }
@@ -67,8 +66,8 @@ public class Seance implements Serializable{
     public void setMedicament(String medicament) {
         this.medicament = medicament;
     }
- @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JoinColumn(name="id_fiche")  
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="id_fiche")  
     public Fiche getFiche() {
         return fiche;
     }
@@ -76,20 +75,9 @@ public class Seance implements Serializable{
     public void setFiche(Fiche fiche) {
         this.fiche = fiche;
     }
- @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JoinColumn(name="id_utilisateur") 
-    public Medecin getMedecin() {
-        return medecin;
-    }
-
-    public void setMedecin(Medecin medecin) {
-        this.medecin = medecin;
-    }
 
     @Override
     public String toString() {
-        return "Seance{" + "id_seance=" + id_seance + ", date=" + date + ", compte_rendu=" + compte_rendu + ", medicament=" + medicament + ", fiche=" + fiche + ", medecin=" + medecin + '}';
+        return "Seance{" + "id_seance=" + id_seance + ", date=" + date + ", compte_rendu=" + compte_rendu + ", medicament=" + medicament+ '}';
     }
-    
-    
 }

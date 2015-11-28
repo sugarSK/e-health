@@ -30,7 +30,6 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Table(name="medecin")
     public class Medecin extends Utilisateur implements Serializable{
     private Specialite specialite;
-    private List<Seance> seances;
     private List<Fiche> fiches;
     private Admin admin;
      
@@ -44,15 +43,7 @@ import org.hibernate.annotations.LazyCollectionOption;
     public void setSpecialite(Specialite specialite) {
         this.specialite = specialite;
     }
-    @OneToMany(mappedBy ="medecin", cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    public List<Seance> getSeances() {
-        return seances;
-    }
-
-    public void setSeances(List<Seance> seances) {
-        this.seances = seances;
-    }
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name="id_admin")
@@ -60,15 +51,23 @@ import org.hibernate.annotations.LazyCollectionOption;
         return admin;
     }
 
-    
-
     public void setAdmin(Admin admin) {
         this.admin = admin;
     }
 
+    @OneToMany(mappedBy = "medecin", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    public List<Fiche> getFiches() {
+        return fiches;
+    }
+
+    public void setFiches(List<Fiche> fiches) {
+        this.fiches = fiches;
+    }
+
+    
     @Override
     public String toString() {
-        return "Medecin{" + "specialite=" + specialite + ", seances=" + seances + ", fiches=" + fiches + ", admin=" + admin + '}';
-    }
-     
+        return "Medecin{" + "specialite=" + specialite  + ", admin=" + admin + '}'+super.toString();
+    } 
 }

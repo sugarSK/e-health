@@ -170,19 +170,19 @@ public class testController {
 //        servicePatient.savePatient(patient2);
 
         Medecin medecin = serviceMedecin.findMedecinById(2);
-        //Fiche fiche2 = serviceFiche.findFicheByIdMedecinAndIdPatient(medecin,patient2);
-//        Seance seance = new Seance();
-//        seance.setCompte_rendu("compte");
-//        seance.setDate("03-09-1993");
-//        seance.setFiche(fiche2);
-//        seance.setMedecin(medecin);
-//        seance.setMedicament("doliprane");
-//        serviceSEance.SaveCompteRenduSeance(seance);
-//          
-//           List<Seance> scs=serviceSEance.fndAllCompteRenduSeanceByIdFiche(1);
-//                 for(Seance r : scs){
-//                     System.out.println(r.getMedicament());
-//                 }
-        return medecin.toString();
+        Patient p = servicePatient.findPatientById(1);
+        Fiche fiche2 = serviceFiche.findFicheByIdMedecinAndIdPatient(medecin,p);
+        Seance seance = new Seance();
+        seance.setCompte_rendu("compte");
+        seance.setDate("03-09-1993");
+        seance.setFiche(fiche2);
+        seance.setMedicament("doliprane");
+        serviceSEance.SaveCompteRenduSeance(seance);
+          
+        List<Seance> scs=serviceSEance.fndAllCompteRenduSeanceByIdFiche(fiche2.getId_fiche());
+            for(Seance r : scs){
+                System.out.println(r.getMedicament());
+            }
+        return scs.toString();
     }
 }
