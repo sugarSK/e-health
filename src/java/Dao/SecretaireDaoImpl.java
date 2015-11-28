@@ -10,11 +10,13 @@ import Metier.Seance;
 import Metier.Secretaire;
 import java.util.List;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author soukaina
  */
+@Repository("secretaireDao")
 public class SecretaireDaoImpl extends AbstractDao<Integer, Secretaire> implements SecretaireDao{
 
     @Override

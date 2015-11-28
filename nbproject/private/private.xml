@@ -3,13 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/AdminDao.java</file>
             <file>file:/Users/said/NetBeansProjects/e-health/src/java/Controller/testController.java</file>
+            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/SeanceDaoImpl.java</file>
+            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/FicheDaoImpl.java</file>
+            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/SecretaireDao.java</file>
             <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/MedecinDaoImpl.java</file>
             <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/MedecinDao.java</file>
             <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/AdminDaoImpl.java</file>
+            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Metier/Rdv.java</file>
+            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/RdvDao.java</file>
+            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/SecretaireDaoImpl.java</file>
             <file>file:/Users/said/NetBeansProjects/e-health/src/java/Metier/Medecin.java</file>
-            <file>file:/Users/said/NetBeansProjects/e-health/web/WEB-INF/spring-mvc.xml</file>
+            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/RdvDaoImpl.java</file>
         </group>
     </open-files>
 </project-private>

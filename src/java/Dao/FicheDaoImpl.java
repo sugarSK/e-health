@@ -5,16 +5,19 @@
  */
 package Dao;
 
+import Metier.Admin;
 import Metier.Fiche;
 import Metier.Rdv;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author soukaina
  */
+@Repository("ficheDao")
 public class FicheDaoImpl extends AbstractDao<Integer, Fiche> implements FicheDao {
 
     @Override
@@ -29,5 +32,34 @@ public class FicheDaoImpl extends AbstractDao<Integer, Fiche> implements FicheDa
         s.close();
         return fiche;
     }
+
+    @Override
+    public void saveFiche(Fiche fiche) {
+             Session s = getSession();
+        s.beginTransaction();
+        s.save(fiche);
+        s.getTransaction().commit();
+        s.close();
+    }
+
+    @Override
+    public void updateFiche(Fiche fiche) {
+             Session s = getSession();
+        s.beginTransaction();
+        s.update(fiche);
+        s.getTransaction().commit();
+        s.close();
+    }
+
+    @Override
+    public void deleteFiche(Fiche fiche) {
+             Session s = getSession();
+        s.beginTransaction();
+        s.delete(fiche);
+        s.getTransaction().commit();
+        s.close();
+    }
+
+     
     
 }

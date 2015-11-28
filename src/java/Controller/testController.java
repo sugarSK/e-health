@@ -6,14 +6,22 @@
 package Controller;
 
 import Dao.AdminDao;
+import Dao.FicheDao;
 import Dao.MedecinDao;
 import Dao.PatientDao;
+import Dao.RdvDao;
+import Dao.SeanceDao;
+import Dao.SecretaireDao;
 import Dao.SpecialiteDao;
 import Metier.Admin;
+import Metier.Fiche;
 import Metier.Medecin;
 import Metier.Patient;
+import Metier.Rdv;
+import Metier.Seance;
 import Metier.Secretaire;
 import Metier.Specialite;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +43,14 @@ public class testController {
     private MedecinDao serviceMedecin;
     @Autowired
     private SpecialiteDao serviceSpecialite;
-    
+    @Autowired
+    private SecretaireDao serviceSecretaire;
+    @Autowired
+    private RdvDao serviceRdv;
+    @Autowired
+    private FicheDao serviceFiche;
+    @Autowired
+    private SeanceDao serviceSEance;
     @RequestMapping(value="/test",method=RequestMethod.GET)
     @ResponseBody
     public String test()
@@ -79,7 +94,7 @@ public class testController {
         patient2.setMaladie("fievre");
         servicePatient.savePatient(patient2);
         servicePatient.deletePatient(patient2);
-        Patient patient3=servicePatient.findPatientById(1);*/
+        Patient patient3=servicePatient.findPatientById(1);
          Admin adm = service.findAdminById(4);
          
 
@@ -97,7 +112,8 @@ public class testController {
         medecin.setPassword("medecin");
         medecin.setNom("mazzir");
         medecin.setPrenom("soukaina");
-        medecin.setNumero_telephone("3456789");
+        medecin.setNumero_telephone("34567679");
+        serviceMedecin.saveMedecin(medecin);
 
         
         
@@ -113,7 +129,60 @@ public class testController {
         secretaire.setPassword("secretaire");
         secretaire.setAdmin(adm);
         secretaire.setMedecin(medecin);
+        serviceSecretaire.saveSecretaire(secretaire);
+        List<Rdv> rdvs=serviceRdv.findAllRdvByIdMedecin(2);
+                 for(Rdv r : rdvs){
+                     System.out.println(r.getCause());
+                 }
+    Medecin medecin = serviceMedecin.findMedecinById(2);
+      Patient patient=servicePatient.findPatientById(1);
+    
+        Fiche fiche=new Fiche();
+        fiche.setMedecin(medecin);
+        fiche.setPatient(patient);
+        serviceFiche.saveFiche(fiche);
+        
+        Seance seance = new Seance();
+        seance.setCompte_rendu("compte");
+        seance.setDate("03-09-1993");
+        seance.setFiche(fiche);
+        seance.setMedecin(medecin);
+        seance.setMedicament("omnivite");
+        serviceSEance.SaveCompteRenduSeance(seance);
+        
+        seance.setCompte_rendu("bla bla");
+        serviceSEance.UpdateCompteRenduSeance(seance);
+        
+        Fiche fiche1=new Fiche();
+        fiche1.setMedecin(medecin);
+        fiche1.setPatient(patient);
+        serviceFiche.deleteFiche(fiche1);
+        
+         Patient patient2 = new Patient();
+        patient2.setNom("mazzi");
+        patient2.setPrenom("meryem");
+        patient2.setAdresse("khribga");
+        patient2.setDate_naissance("03-12-1992");
+        patient2.setLogin("mimi");
+        patient2.setPassword("mimi");
+        patient2.setNumero_telephone("098765456");
+        patient2.setMaladie("deperssion");
+        servicePatient.savePatient(patient2);*/
 
-        return secretaire.toString();
+        Medecin medecin = serviceMedecin.findMedecinById(2);
+            Fiche fiche2=serviceFiche.findFicheByIdMedecinAndIdPatient(2,1);
+        Seance seance = new Seance();
+        seance.setCompte_rendu("compte");
+        seance.setDate("03-09-1993");
+        seance.setFiche(fiche2);
+        seance.setMedecin(medecin);
+        seance.setMedicament("doliprane");
+        serviceSEance.SaveCompteRenduSeance(seance);
+          
+           List<Seance> scs=serviceSEance.fndAllCompteRenduSeanceByIdFiche(1);
+                 for(Seance r : scs){
+                     System.out.println(r.getMedicament());
+                 }
+        return fiche2.toString();
     }
 }

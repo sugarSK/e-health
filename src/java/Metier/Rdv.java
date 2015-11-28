@@ -25,7 +25,7 @@ import javax.persistence.Table;
    @Table(name="rdv")
 public class Rdv implements Serializable {
     private int id_rdv;
-    private Date date;
+    private String date;
     private String heure;
     private String cause;
     private Patient patient;
@@ -41,13 +41,13 @@ public class Rdv implements Serializable {
         this.id_rdv = id_rdv;
     }
     @Column(name="date")
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
     
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
     @Column(name="heure")

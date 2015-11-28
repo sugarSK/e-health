@@ -13,6 +13,10 @@ import Metier.Fiche;
  */
 public interface FicheDao {
     Fiche findFicheByIdMedecinAndIdPatient(int id_utilisateur_medecin,int id_utilisateur_patient);
-    
-    
+       void saveFiche(Fiche fiche);
+     
+    void updateFiche(Fiche fiche);
+     
+    void deleteFiche(Fiche fiche);
+  
 }
