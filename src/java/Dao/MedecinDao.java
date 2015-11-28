@@ -12,6 +12,7 @@ import Metier.Medecin;
  * @author soukaina
  */
 public interface MedecinDao {
+        
         Medecin findMedecinById(int id_utilisateur);
         void saveMedecin(Medecin medecin);
      

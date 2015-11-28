@@ -28,7 +28,7 @@ public class Admin implements Serializable {
     private String password;
     
    
-   @Id
+    @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="id_admin" ,unique = true,nullable = false)
     public int getId_admin() {
@@ -40,7 +40,7 @@ public class Admin implements Serializable {
     }
 
    
-@Column(name="login")
+    @Column(name="login")
     public String getLogin() {
         return login;
     }
@@ -48,8 +48,8 @@ public class Admin implements Serializable {
     public void setLogin(String login) {
         this.login = login;
     }
-@Column(name="password")
-
+    
+    @Column(name="password")
     public String getPassword() {
         return password;
     }

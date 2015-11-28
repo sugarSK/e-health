@@ -5,7 +5,6 @@
  */
 package Dao;
 
-import Metier.Fiche;
 import Metier.Seance;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
 public interface SeanceDao  {
     void SaveCompteRenduSeance(Seance seance);
     void UpdateCompteRenduSeance(Seance seance);
-    List<Seance> fndAllCompteRenduSeanceByIdFiche(Fiche fiche);
+    List<Seance> fndAllCompteRenduSeanceByIdFiche(int id_fiche);
            
     
 }
