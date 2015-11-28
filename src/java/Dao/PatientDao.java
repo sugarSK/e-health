@@ -13,7 +13,7 @@ import Metier.Patient;
  */
 public interface PatientDao {
     
-        Patient findPatientById(String id_utilisateur);
+        Patient findPatientById(int id_utilisateur);
 
         void savePatient(Patient patient);
      

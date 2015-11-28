@@ -6,7 +6,10 @@
 package Dao;
 import Dao.AbstractDao;
 import Metier.Admin;
+import Metier.Medecin;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 /**
  *
@@ -41,5 +44,17 @@ public class AdminDaoImpl extends AbstractDao<Integer, Admin> implements AdminDa
         s.getTransaction().commit();
         s.close();
     }
+
+    @Override
+    public Admin findAdminById(int id_admin) {
+             Session s = getSession();
+        s.beginTransaction();
+        Criteria criteria = s.createCriteria(Medecin.class);
+        criteria.add(Restrictions.eq("id_admin",id_admin));
+        Admin admin = (Admin) criteria.uniqueResult();
+        s.getTransaction().commit();
+        s.close();
+        return admin;
     
+}
 }

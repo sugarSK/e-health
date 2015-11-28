@@ -41,9 +41,11 @@ public class UtilisateurDaoImpl  extends AbstractDao<Integer, Utilisateur> imple
   
     @Override
     public void deleteUtilisateur(Utilisateur utilisateur) {
-        Query query = getSession().createSQLQuery("delete from Utilisateur where id_utilisateur = :identifiant")
-            .setParameter("identifiant", utilisateur.getId_utilisateur());
-        query.executeUpdate();
+               Session s = getSession();
+        s.beginTransaction();
+        s.delete(utilisateur);
+        s.getTransaction().commit();
+        s.close();
 
     }
 

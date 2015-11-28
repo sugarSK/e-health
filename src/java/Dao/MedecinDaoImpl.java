@@ -5,10 +5,8 @@
  */
 package Dao;
 
-import Metier.Patient;
-import Metier.Utilisateur;
+import Metier.Medecin;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -17,45 +15,44 @@ import org.springframework.stereotype.Repository;
  *
  * @author soukaina
  */
-@Repository("patientDao")
-public class PatientDaoImpl extends AbstractDao<Integer, Patient> implements PatientDao {
+@Repository("medecinDao")
+public class MedecinDaoImpl extends AbstractDao<Integer, Medecin> implements MedecinDao{
 
     @Override
-    public Patient findPatientById(int id_utilisateur) {
-        Session s = getSession();
+    public Medecin findMedecinById(int id_utilisateur) {
+            Session s = getSession();
         s.beginTransaction();
-        Criteria criteria = s.createCriteria(Patient.class);
+        Criteria criteria = s.createCriteria(Medecin.class);
         criteria.add(Restrictions.eq("id_utilisateur",id_utilisateur));
-        Patient patient = (Patient) criteria.uniqueResult();
+        Medecin medecin = (Medecin) criteria.uniqueResult();
         s.getTransaction().commit();
         s.close();
-        return patient;
+        return medecin;
     }
 
-  
-
     @Override
-    public void savePatient(Patient patient) {
-          Session s = getSession();
+    public void saveMedecin(Medecin medecin) {
+         Session s = getSession();
         s.beginTransaction();
-        s.save(patient);
+        s.save(medecin);
         s.getTransaction().commit();
         s.close();
     }
 
     @Override
-    public void updatePatient(Patient patient) {
-   Session s = getSession();
+    public void updateMedecin(Medecin medecin) {
+         Session s = getSession();
         s.beginTransaction();
-        s.update(patient);
+        s.update(medecin);
         s.getTransaction().commit();
-        s.close();    }
+        s.close();
+    }
 
     @Override
-    public void deletePatient(Patient patient) {
-           Session s = getSession();
+    public void deleteMedecin(Medecin Medecin) {
+         Session s = getSession();
         s.beginTransaction();
-        s.delete(patient);
+        s.delete(Medecin);
         s.getTransaction().commit();
         s.close();
     }

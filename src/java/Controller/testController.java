@@ -6,9 +6,14 @@
 package Controller;
 
 import Dao.AdminDao;
+import Dao.MedecinDao;
 import Dao.PatientDao;
+import Dao.SpecialiteDao;
 import Metier.Admin;
+import Metier.Medecin;
 import Metier.Patient;
+import Metier.Secretaire;
+import Metier.Specialite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +31,11 @@ public class testController {
     private AdminDao service ;
     @Autowired
     private PatientDao servicePatient;
+    @Autowired 
+    private MedecinDao serviceMedecin;
+    @Autowired
+    private SpecialiteDao serviceSpecialite;
+    
     @RequestMapping(value="/test",method=RequestMethod.GET)
     @ResponseBody
     public String test()
@@ -44,7 +54,7 @@ public class testController {
        admin_2.setPassword("admin");
         service.updateAdmin(admin_2);
         
-        service.deleteAdmin(admin_1);*/
+        service.deleteAdmin(admin_1);
         Patient patient = new Patient();
         patient.setNom("Ouassmine");
         patient.setPrenom("Med amine");
@@ -69,7 +79,41 @@ public class testController {
         patient2.setMaladie("fievre");
         servicePatient.savePatient(patient2);
         servicePatient.deletePatient(patient2);
+        Patient patient3=servicePatient.findPatientById(1);*/
+         Admin adm = service.findAdminById(4);
+         
+
+        Specialite specialite = new Specialite();
+        specialite.setAdmin(adm);
+        specialite.setIntitule("pediatre");
+        serviceSpecialite.saveSpecialite(specialite);
         
-        return patient2.toString();
+        Medecin medecin = new Medecin();
+        medecin.setAdmin(adm);
+        medecin.setSpecialite(specialite);
+        medecin.setAdresse("casa");
+        medecin.setDate_naissance("09-04-1980");
+        medecin.setLogin("medecin");
+        medecin.setPassword("medecin");
+        medecin.setNom("mazzir");
+        medecin.setPrenom("soukaina");
+        medecin.setNumero_telephone("3456789");
+
+        
+        
+        
+        
+        Secretaire secretaire = new Secretaire();
+        secretaire.setNom("fatine");
+        secretaire.setPrenom("lyla");
+        secretaire.setAdresse("casa");
+        secretaire.setDate_naissance("03-06-1990");
+        secretaire.setNumero_telephone("3456789");
+        secretaire.setLogin("secretaire");
+        secretaire.setPassword("secretaire");
+        secretaire.setAdmin(adm);
+        secretaire.setMedecin(medecin);
+
+        return secretaire.toString();
     }
 }

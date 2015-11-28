@@ -15,5 +15,7 @@ public interface AdminDao {
     void updateAdmin(Admin admin);
      
     void deleteAdmin(Admin admin);
+    Admin findAdminById(int id_admin);
+
 
 }

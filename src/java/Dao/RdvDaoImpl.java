@@ -9,11 +9,13 @@ import Metier.Rdv;
 import Metier.Utilisateur;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author soukaina
  */
+@Repository("rdvDao")
 public class RdvDaoImpl extends AbstractDao<Integer, Rdv> implements RdvDao{
 
     @Override

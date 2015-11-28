@@ -24,7 +24,6 @@ import javax.persistence.Table;
 @Table(name="patient")
 public class Patient extends Utilisateur implements Serializable{
  private String maladie;
- private List<Rdv> rdvs;
  
  
      @Column(name="maladie")
@@ -36,20 +35,14 @@ public class Patient extends Utilisateur implements Serializable{
     public void setMaladie(String maladie) {
         this.maladie = maladie;
     }
-    @OneToMany(mappedBy = "patient")
-    public List<Rdv> getRdvs() {
-        return rdvs;
-    }
 
-    public void setRdvs(List<Rdv> rdvs) {
-        this.rdvs = rdvs;
-    }
 
     @Override
     public String toString() {
-        return "Patient{" + "maladie=" + maladie + '}';
+        return "Patient{" + "maladie=" + maladie +  '}';
     }
- 
+
+    
     
 
     
