@@ -29,7 +29,6 @@ public class Specialite  implements Serializable {
     
     private int id_specialite;
     private String intitule;
-    private List<Medecin> medecins;
     private Admin admin;
     
     @Id
@@ -51,14 +50,6 @@ public class Specialite  implements Serializable {
     public void setIntitule(String intitule) {
         this.intitule = intitule;
     }
-    @OneToMany(mappedBy = "specialite",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public List<Medecin> getMedecins() {
-        return medecins;
-    }
-
-    public void setMedecins(List<Medecin> medecins) {
-        this.medecins = medecins;
-    }
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="id_admin")
     public Admin getAdmin() {
@@ -71,7 +62,7 @@ public class Specialite  implements Serializable {
 
     @Override
     public String toString() {
-        return "Specialite{" + "id_specialite=" + id_specialite + ", intitule=" + intitule + ", medecins=" + medecins + ", admin=" + admin + '}';
+        return "Specialite{" + "id_specialite=" + id_specialite + ", intitule=" + intitule + ", admin=" + admin + '}';
     }
     
     
