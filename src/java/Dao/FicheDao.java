@@ -6,13 +6,15 @@
 package Dao;
 
 import Metier.Fiche;
+import Metier.Medecin;
+import Metier.Patient;
 
 /**
  *
  * @author soukaina
  */
 public interface FicheDao {
-    Fiche findFicheByIdMedecinAndIdPatient(int id_utilisateur_medecin,int id_utilisateur_patient);
+    Fiche findFicheByIdMedecinAndIdPatient(Medecin medecin,Patient patient);
        void saveFiche(Fiche fiche);
      
     void updateFiche(Fiche fiche);

@@ -170,7 +170,8 @@ public class testController {
         servicePatient.savePatient(patient2);*/
 
         Medecin medecin = serviceMedecin.findMedecinById(2);
-            Fiche fiche2=serviceFiche.findFicheByIdMedecinAndIdPatient(2,1);
+        Patient patient= servicePatient.findPatientById(1);
+        Fiche fiche2=serviceFiche.findFicheByIdMedecinAndIdPatient(medecin,patient);
         Seance seance = new Seance();
         seance.setCompte_rendu("compte");
         seance.setDate("03-09-1993");
@@ -179,7 +180,7 @@ public class testController {
         seance.setMedicament("doliprane");
         serviceSEance.SaveCompteRenduSeance(seance);
           
-           List<Seance> scs=serviceSEance.fndAllCompteRenduSeanceByIdFiche(1);
+           List<Seance> scs=serviceSEance.fndAllCompteRenduSeanceByIdFiche(fiche2);
                  for(Seance r : scs){
                      System.out.println(r.getMedicament());
                  }

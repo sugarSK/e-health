@@ -30,7 +30,6 @@ public class Fiche implements Serializable{
     private int id_fiche;   
     private Patient patient;
     private Medecin medecin;
-    private List<Seance> seances;
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="id_fiche" ,unique = true,nullable = false)
@@ -60,18 +59,11 @@ public class Fiche implements Serializable{
         this.medecin = medecin;
     }
 
-    @OneToMany(mappedBy = "fiche")
-    public List<Seance> getSeances() {
-        return seances;
-    }
-
-    public void setSeances(List<Seance> seances) {
-        this.seances = seances;
-    }
+  
 
     @Override
     public String toString() {
-        return "Fiche{" + "id_fiche=" + id_fiche + ", patient=" + patient + ", medecin=" + medecin + ", seances=" + seances + '}';
+        return "Fiche{" + "id_fiche=" + id_fiche + ", patient=" + patient + ", medecin=" + medecin + '}';
     }
     
     

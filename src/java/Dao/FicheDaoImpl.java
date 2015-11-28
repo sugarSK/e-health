@@ -7,6 +7,8 @@ package Dao;
 
 import Metier.Admin;
 import Metier.Fiche;
+import Metier.Medecin;
+import Metier.Patient;
 import Metier.Rdv;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -21,18 +23,21 @@ import org.springframework.stereotype.Repository;
 public class FicheDaoImpl extends AbstractDao<Integer, Fiche> implements FicheDao {
 
     @Override
-    public Fiche findFicheByIdMedecinAndIdPatient(int id_utilisateur_medecin, int id_utilisateur_patient) {
-          Session s = getSession();
+    public Fiche findFicheByIdMedecinAndIdPatient(Medecin medecin,Patient patient) {
+        Session s = getSession();
         s.beginTransaction();
         Criteria criteria = s.createCriteria(Fiche.class);
-        criteria.add(Restrictions.eq("id_utilisateur_medecin",id_utilisateur_medecin));
-        criteria.add(Restrictions.eq("id_utilisateur_patient",id_utilisateur_patient));
+        criteria.add(Restrictions.eq("medecin",medecin));
+        criteria.add(Restrictions.eq("patient",patient));
         Fiche fiche = (Fiche) criteria.uniqueResult();
         s.getTransaction().commit();
         s.close();
         return fiche;
     }
 
+    
+    
+    
     @Override
     public void saveFiche(Fiche fiche) {
              Session s = getSession();
