@@ -169,7 +169,7 @@ public class testController {
 //        patient2.setMaladie("deperssion");
 //        servicePatient.savePatient(patient2);
 
-        Medecin medecin = serviceMedecin.findMedecinById(4);
+        Medecin medecin = serviceMedecin.findMedecinById(2);
         //Fiche fiche2 = serviceFiche.findFicheByIdMedecinAndIdPatient(medecin,patient2);
 //        Seance seance = new Seance();
 //        seance.setCompte_rendu("compte");

@@ -32,7 +32,6 @@ import org.hibernate.annotations.LazyCollectionOption;
     private Specialite specialite;
     private List<Seance> seances;
     private List<Fiche> fiches;
-    private List<Secretaire> secretaires;
     private Admin admin;
      
     @ManyToOne(cascade = CascadeType.ALL)
@@ -61,31 +60,15 @@ import org.hibernate.annotations.LazyCollectionOption;
         return admin;
     }
 
-    @OneToMany(mappedBy = "medecin", cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    public List<Fiche> getFiches() {
-        return fiches;
-    }
-
-    public void setFiches(List<Fiche> fiches) {
-        this.fiches = fiches;
-    }
+    
 
     public void setAdmin(Admin admin) {
         this.admin = admin;
     }
-    @OneToMany(mappedBy = "medecin",cascade = CascadeType.ALL)   
-    @LazyCollection(LazyCollectionOption.FALSE)
-    public List<Secretaire> getSecretaires() {
-        return secretaires;
-    }
-
-    public void setSecretaires(List<Secretaire> secretaires) {
-        this.secretaires = secretaires;
-    }
 
     @Override
     public String toString() {
-        return "Medecin{" + "specialite=" + specialite + ", seances=" + seances + ", fiches=" + fiches + ", secretaires=" + secretaires + ", admin=" + admin + '}';
-    } 
+        return "Medecin{" + "specialite=" + specialite + ", seances=" + seances + ", fiches=" + fiches + ", admin=" + admin + '}';
+    }
+     
 }
