@@ -40,8 +40,8 @@ public class SeanceDaoImpl extends AbstractDao<Integer, Seance> implements Seanc
 
     @Override
     public List<Seance> fndAllCompteRenduSeanceByIdFiche(int id_fiche) {
-                   Criteria criteria = getSession().createCriteria(Seance.class);
-        return (List<Seance>) criteria.list();
+            Criteria criteria = getSession().createCriteria(Seance.class);
+    return (List<Seance>) criteria.list();
     }
     
 }
