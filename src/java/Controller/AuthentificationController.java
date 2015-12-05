@@ -8,6 +8,7 @@ package Controller;
 import Dao.FicheDao;
 import Dao.MedecinDao;
 import Dao.PatientDao;
+import Dao.RdvDaoImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,7 @@ import Dao.UtilisateurDao;
 import Metier.Fiche;
 import Metier.Medecin;
 import Metier.Patient;
+import Metier.Rdv;
 import org.springframework.beans.factory.annotation.Autowired;
 import Metier.Utilisateur;
 import java.util.Iterator;
@@ -37,6 +39,9 @@ public class AuthentificationController {
     private FicheDao serviceFiche;
     @Autowired
     private PatientDao servicePatient;
+    @Autowired
+     private RdvDaoImpl serviceRdv;
+
     @RequestMapping(value="/",method=RequestMethod.GET)
     public String showLogin()
     {
@@ -63,6 +68,8 @@ public class AuthentificationController {
 //                    session.setAttribute("Fiche_amine",next);
 //                }
 //            }
+            List<Rdv> listRdvs = serviceRdv.findAllRdvByIdMedecin(serviceUtilisateur.findByCompte(login, password).getId_utilisateur());
+            session.setAttribute("listRdvs", listRdvs);
             session.setAttribute("fiche_patient", fiche_patient);
             return "accueil";
         }else{

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : User
-    Created on : 22 nov. 2015, 01:35:35
-    Author     : PC
+    Document   : fichePatient
+    Created on : 5 déc. 2015, 19:14:56
+    Author     : soukaina
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h3>Nom :   ${utilisateur.prenom}</h3>
+        <h1>Hello World!</h1>
     </body>
 </html>

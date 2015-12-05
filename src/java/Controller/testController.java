@@ -157,7 +157,7 @@ public class testController {
         fiche1.setMedecin(medecin);
         fiche1.setPatient(patient);
         serviceFiche.deleteFiche(fiche1);
-//        */
+//        
 //        Patient patient2 = new Patient();
 //        patient2.setNom("mazzi");
 //        patient2.setPrenom("meryem");
@@ -182,6 +182,14 @@ public class testController {
         List<Seance> scs=serviceSEance.fndAllCompteRenduSeanceByIdFiche(fiche2.getId_fiche());
             for(Seance r : scs){
                 System.out.println(r.getMedicament());
+            }
+            
+        
+        */
+            Medecin medecin = serviceMedecin.findMedecinById(2);
+        List<Rdv> scs=serviceRdv.findAllRdvByIdMedecin(medecin.getId_utilisateur());
+            for(Rdv r : scs){
+                System.out.println(r.getCause());
             }
         return scs.toString();
     }

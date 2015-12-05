@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface RdvDao  {
         List<Rdv> findAllRdvByIdMedecin(int id_utilisateur);
-        
+        Rdv findRdvById(int id_rdv);
     
 }

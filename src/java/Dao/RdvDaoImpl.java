@@ -9,6 +9,8 @@ import Metier.Rdv;
 import Metier.Utilisateur;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -23,6 +25,17 @@ public class RdvDaoImpl extends AbstractDao<Integer, Rdv> implements RdvDao{
            Criteria criteria = getSession().createCriteria(Rdv.class);
         return (List<Rdv>) criteria.list();
     }
-    
+       
+    @Override
+    public Rdv findRdvById(int id_rdv) {
+        Session s = getSession();
+        s.beginTransaction();
+        Criteria criteria = s.createCriteria(Rdv.class);
+        criteria.add(Restrictions.eq("id_rdv",id_rdv));
+        Rdv medecin = (Rdv) criteria.uniqueResult();
+        s.getTransaction().commit();
+        s.close();
+        return medecin;
+    }
     
 }
