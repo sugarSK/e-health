@@ -10,11 +10,13 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author soukaina
  */
+@Repository("rdvEnAttenteDao")
 public class RdvEnAttenteImpl extends AbstractDao<Integer, RdvEnAttenteDao> implements RdvEnAttenteDao{
 
     @Override
