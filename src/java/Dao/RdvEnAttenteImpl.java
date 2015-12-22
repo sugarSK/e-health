@@ -5,6 +5,8 @@
  */
 package Dao;
 
+import Metier.Admin;
+import Metier.Medecin;
 import Metier.RdvEnAttente;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -20,9 +22,9 @@ import org.springframework.stereotype.Repository;
 public class RdvEnAttenteImpl extends AbstractDao<Integer, RdvEnAttenteDao> implements RdvEnAttenteDao{
 
     @Override
-    public List<RdvEnAttente> findAllRdvEnattenteByIdMedecin(int id_utilisateur) {
+    public List<RdvEnAttente> findAllRdvEnattenteByMedecin(Medecin medecin) {
            Criteria criteria = getSession().createCriteria(RdvEnAttente.class);
-           //criteria.add(Restrictions.eq("id_utilisateur",id_utilisateur));
+           criteria.add(Restrictions.eq("medecin",medecin));
         return (List<RdvEnAttente>) criteria.list();
     }
 
@@ -50,5 +52,13 @@ public class RdvEnAttenteImpl extends AbstractDao<Integer, RdvEnAttenteDao> impl
         s.close();
         return rd;
     }
-    
+    @Override
+    public void deleteRdvEnAttente(RdvEnAttente rdv) {
+        Session s = getSession();
+        s.beginTransaction();
+        s.delete(rdv);
+        s.getTransaction().commit();
+        s.close();
+    }
+
 }

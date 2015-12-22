@@ -11,7 +11,7 @@
   <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Bootstrap Core CSS -->
-        <link href="${pageContext.request.contextPath}/vues/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/vues/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/vues/css/style.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
     <link href="${pageContext.request.contextPath}/vues/css/metisMenu.min.css" rel="stylesheet">
@@ -58,13 +58,11 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/vues/accueilSecretaire.jsp"> Rendez vous<span class="glyphicon glyphicon-book pull-right"></span></a>
-                            <a href="${pageContext.request.contextPath}/vues/secretaireAllFichesPatient.jsp">Fiches des patients<span class="glyphicon glyphicon-book pull-right"></span></a>
-                            <a href="${pageContext.request.contextPath}/vues/SecretaireRdvEnAttente.jsp">Rendez vous en Attente<span class="glyphicon glyphicon-book pull-right"></span></a>
-                            <a href="${pageContext.request.contextPath}/vues/dossier.jsp">Dossier Medical<span class="glyphicon glyphicon-book pull-right"></span></a>
+                         <li>
+                            <a href="${pageContext.request.contextPath}/accueilSecretaire"> Rendez vous<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/secretaireAllFichesPatient">Fiches des patients<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/SecretaireRdvEnAttente">Rdv en attente<span class="glyphicon glyphicon-book pull-right"></span></a>
                         </li>
-                       
                         
                        
                     </ul>
@@ -92,6 +90,7 @@
                                                 <th>Nom </th>
                                                 <th>Prenom</th>
                                                 <th>Confirmer</th>
+                                                <th>Supprimer</th>
 
                                                
                                         </tr>
@@ -105,8 +104,10 @@
                                                 <td><c:out value="${rdAttente.patient.id_utilisateur}"/></td>
                                                 <td><c:out value="${rdAttente.patient.nom}"/></td>
                                                 <td><c:out value="${rdAttente.patient.prenom}"/></td>
-                                                <td><a class="btn btn-warning" href="<c:url value="/ConfirmerRdvAttente/${rdAttente.id_rdv_attente}"/>">Confirmer</a></td>
-                                            </tr>
+                                                <td><a class="btn btn-warning" href="<c:url value="/vues/ConfirmerRdvAttente/${rdAttente.id_rdv_attente}"/>">Confirmer</a></td>
+                                                <td><a class="btn btn-warning" href="<c:url value="/vues/DeleteRdvAttente/${rdAttente.id_rdv_attente}"/>">Supprimer</a></td>
+  
+                                         </tr>
       
                                          </c:forEach> 
                                     </tbody>
@@ -118,7 +119,7 @@
                                 <div class="well">
                                      <p>
                                            <div class="panel-body">
-                                                 <form  action="findRdv" role="form" method="POST">
+                                                 <form  action="findRdv" role="form" method="post">
                                                  <div>
                                                  <table>     
                                                      <tr>
@@ -134,6 +135,8 @@
                                                      <input type="submit"  value="search" class="btn btn-group-sm btn-warning"/>
                                                  </form>
                                                      
+                                                     <c:out value="${rdvss1.id_rdv}"/>
+                                                    <c:out value="${date}"/>
                                            </div>
                                      </p>
                                 </div>

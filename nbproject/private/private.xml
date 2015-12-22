@@ -4,11 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/said/NetBeansProjects/e-health/web/vues/SecretaireRdvEnAttente.jsp</file>
-            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Controller/AuthentificationController.java</file>
-            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/RdvDao.java</file>
-            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/RdvDaoImpl.java</file>
-            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Controller/SecretaireRdvEbAttenteController.java</file>
-            <file>file:/Users/said/NetBeansProjects/e-health/src/java/Dao/RdvEnAttenteImpl.java</file>
+            <file>file:/Users/said/NetBeansProjects/e-health/web/vues/accueilSecretaire.jsp</file>
         </group>
     </open-files>
 </project-private>

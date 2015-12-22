@@ -67,7 +67,7 @@ public class Rdv implements Serializable {
     public void setCause(String cause) {
         this.cause = cause;
     }
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL,CascadeType.REMOVE})
     @JoinColumn(name="id_utilisateur_patient")
     public Patient getPatient() {
         return patient;

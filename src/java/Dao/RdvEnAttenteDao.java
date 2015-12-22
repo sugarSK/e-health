@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Metier.Medecin;
 import Metier.Rdv;
 import Metier.RdvEnAttente;
 import java.util.List;
@@ -15,9 +16,9 @@ import java.util.List;
  */
 public interface RdvEnAttenteDao {
     
-      List<RdvEnAttente> findAllRdvEnattenteByIdMedecin(int id_utilisateur);
+      List<RdvEnAttente> findAllRdvEnattenteByMedecin(Medecin medecin);
       RdvEnAttente findRdvEnAttenteById(int id_rdv_attente);
       RdvEnAttente findRdvEnAttenteByDateHeure(String date,String heure);
-
+      void deleteRdvEnAttente(RdvEnAttente rdv);
     
 }

@@ -187,10 +187,8 @@ public class testController {
         
         */
             Medecin medecin = serviceMedecin.findMedecinById(2);
-        List<Rdv> scs=serviceRdv.findAllRdvByIdMedecin(medecin.getId_utilisateur());
-            for(Rdv r : scs){
-                System.out.println(r.getCause());
-            }
-        return scs.toString();
+           Rdv rd= serviceRdv.findRdvByDateHeure("20-12-2015", "11h");
+        return rd.toString();
+            
     }
 }

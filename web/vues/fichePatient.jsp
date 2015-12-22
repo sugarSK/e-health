@@ -60,13 +60,12 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
-                        <a href="${pageContext.request.contextPath}/vues/accueil.jsp">Mes Rendez vous<span class="glyphicon glyphicon-book pull-right"></span></a>
-                            <a href="${pageContext.request.contextPath}/vues/fiches.jsp">Fiches des patients<span class="glyphicon glyphicon-book pull-right"></span></a>
+                              <li>
+                            <a href="${pageContext.request.contextPath}/accueilMedecin">Mes Rendez vous<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/fiches">Fiches des patients<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/ordonances.jsp">Ordonance<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/dossier.jsp">Dossier Medical<span class="glyphicon glyphicon-book pull-right"></span></a>
                         </li>
-                       
-                        
-                       
                     </ul>
                       </div>
                 <!-- /.sidebar-collapse -->

@@ -27,6 +27,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.portlet.ModelAndView;
 /**
  *
@@ -66,7 +67,7 @@ public class AuthentificationController {
             session.setAttribute("medecin", medecin);
             session.setAttribute("listef", medecin.getFiches());
 
-            List<Rdv> listRdvs = serviceRdv.findAllRdvByIdMedecin(serviceUtilisateur.findByCompte(login, password).getId_utilisateur());
+            List<Rdv> listRdvs = serviceRdv.findAllRdvByMedecin(medecin);
             session.setAttribute("listRdvs", listRdvs);
             //List<Fiche> listFiches =serviceFiche.fndAllFichesByMedecin(medecin);
             //session.setAttribute("listFiches", listFiches);
@@ -77,8 +78,8 @@ public class AuthentificationController {
                       Medecin med=secretaire.getMedecin();
                       session.setAttribute("listFiches", med.getFiches());
                       int id=med.getId_utilisateur();
-                      List<Rdv> rd=serviceRdv.findAllRdvByIdMedecin(id);
-                      List<RdvEnAttente> rdAttente=serviceRdvEnAttente.findAllRdvEnattenteByIdMedecin(id);
+                      List<Rdv> rd=serviceRdv.findAllRdvByMedecin(med);
+                      List<RdvEnAttente> rdAttente=serviceRdvEnAttente.findAllRdvEnattenteByMedecin(med);
                       session.setAttribute("rd", rd);
                       session.setAttribute("rdAttente", rdAttente);
                      
@@ -87,13 +88,20 @@ public class AuthentificationController {
         else{
                         return "index";
                        }
-        
-            
-  
-            
-            
-           
-        
+   
     }
+   @RequestMapping(value="/vues/index",method=RequestMethod.GET)
+   public String Logout()
+    {
+        return "index";
+    }
+   @RequestMapping(value = "/testamine",method =RequestMethod.GET)
+   @ResponseBody
+    public String test()
+    {
+         Rdv rd= serviceRdv.findRdvByDateHeure("20-12-2015", "11h");
+        return rd.toString();
+    }
+  
     
 }

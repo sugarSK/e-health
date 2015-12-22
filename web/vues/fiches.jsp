@@ -59,13 +59,11 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/vues/accueil.jsp">Mes Rendez vous<span class="glyphicon glyphicon-book pull-right"></span></a>
-                            <a href="${pageContext.request.contextPath}/vues/fiches.jsp">Fiches des patients<span class="glyphicon glyphicon-book pull-right"></span></a>
-                            <a href="${pageContext.request.contextPath}/vues/ordonances.jsp">Ordonance<span class="glyphicon glyphicon-book pull-right"></span></a>
-                            <a href="${pageContext.request.contextPath}/vues/dossier.jsp">Dossier Medical<span class="glyphicon glyphicon-book pull-right"></span></a>
-                        </li>
-                       
-                        
+                            <a href="${pageContext.request.contextPath}/accueilMedecin">Mes Rendez vous<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/fiches">Fiches des patients<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/ordonances.jsp">Ordonance<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/dossier.jsp">Dossier Medical<span class="glyphicon glyphicon-book pull-right"></span></a>
+                        </li>  
                        
                     </ul>
                       </div>
@@ -99,16 +97,16 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                          <c:forEach var="listFiches" items="${listFiches}">
+                                          <c:forEach var="listef" items="${listef}">
                                          <tr>
-                                                <td> <c:out value="${listFiches.id_fiche}"/></td>                                    
-                                                <td><c:out value="${listFiches.patient.nom}"/></td>
-                                                <td><c:out value="${listFiches.patient.prenom}"/></td>
-                                                <td><c:out value="${listFiches.patient.date_naissance}"/></td>
-                                                <td><c:out value="${listFiches.patient.maladie}"/></td>
+                                                <td> <c:out value="${listef.id_fiche}"/></td>                                    
+                                                <td><c:out value="${listef.patient.nom}"/></td>
+                                                <td><c:out value="${listef.patient.prenom}"/></td>
+                                                <td><c:out value="${listef.patient.date_naissance}"/></td>
+                                                <td><c:out value="${listef.patient.maladie}"/></td>
                                                 <td>
                                                  
-                                                    <a class="btn btn-warning" href="<c:url value="/seance/${listFiches.id_fiche}" />" >Consulter</a>
+                                                    <a class="btn btn-warning" href="<c:url value="/seance/${listef.id_fiche}" />" >Consulter</a>
                                                 </td>
                                                
                                                

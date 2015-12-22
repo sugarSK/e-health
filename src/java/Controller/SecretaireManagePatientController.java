@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author soukaina
  */
 @Controller
+ @RequestMapping(value = "/vues")
 public class SecretaireManagePatientController {
     
  @Autowired
@@ -45,7 +46,7 @@ public class SecretaireManagePatientController {
         {   
             session.setAttribute("message", "Patient existant!");        
         } else {
-             session.setAttribute("message", "!ere rendez vous!");
+             session.setAttribute("message", "1ere rendez vous!");
         }
            
 

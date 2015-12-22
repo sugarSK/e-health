@@ -45,7 +45,7 @@
            
             <li class="dropdown">
           
-            <li><a href="${pageContext.request.contextPath}/vues/index.jsp">Deconnexion</a></li>
+            <li><a href="${pageContext.request.contextPath}/vues/index">Deconnexion</a></li>
         
             <!-- /.dropdown -->
         </ul>
@@ -59,10 +59,10 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/vues/accueil.jsp">Mes Rendez vous<span class="glyphicon glyphicon-book pull-right"></span></a>
-                            <a href="${pageContext.request.contextPath}/vues/fiches.jsp">Fiches des patients<span class="glyphicon glyphicon-book pull-right"></span></a>
-                            <a href="${pageContext.request.contextPath}/vues/ordonances.jsp">Ordonance<span class="glyphicon glyphicon-book pull-right"></span></a>
-                            <a href="${pageContext.request.contextPath}/vues/dossier.jsp">Dossier Medical<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/accueilMedecin">Mes Rendez vous<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/fiches">Fiches des patients<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/ordonances.jsp">Ordonance<span class="glyphicon glyphicon-book pull-right"></span></a>
+                            <a href="${pageContext.request.contextPath}/dossier.jsp">Dossier Medical<span class="glyphicon glyphicon-book pull-right"></span></a>
                         </li>
                        
                         

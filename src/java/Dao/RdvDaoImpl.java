@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Metier.Medecin;
 import Metier.Rdv;
 import Metier.Utilisateur;
 import java.util.List;
@@ -21,9 +22,9 @@ import org.springframework.stereotype.Repository;
 public class RdvDaoImpl extends AbstractDao<Integer, Rdv> implements RdvDao{
 
     @Override
-    public List<Rdv> findAllRdvByIdMedecin(int id_utilisateur) {
+    public List<Rdv> findAllRdvByMedecin(Medecin medecin) {
            Criteria criteria = getSession().createCriteria(Rdv.class);
-           //criteria.add(Restrictions.eq("id_utilisateur",id_utilisateur));
+           criteria.add(Restrictions.eq("medecin",medecin));
         return (List<Rdv>) criteria.list();
     }
        
