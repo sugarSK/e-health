@@ -42,7 +42,7 @@ public class AuthentificationController {
     @Autowired
     private SecretaireDao serviceSecretaire;
     @Autowired
-     private RdvDao serviceRdv;
+    private RdvDao serviceRdv;
     @Autowired
     private RdvEnAttenteDao serviceRdvEnAttente;  
   
