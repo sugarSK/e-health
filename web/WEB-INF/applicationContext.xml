@@ -29,6 +29,7 @@
                 <value>Metier.Rdv</value>
                 <value>Metier.Seance</value>
                 <value>Metier.Specialite</value>
+                <value>Metier.RdvEnAttente</value>
               
             </list>
         </property>

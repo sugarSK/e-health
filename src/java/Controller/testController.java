@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
- * @author PC
+ * @author Soukaina
  */
 @Controller
 public class testController {

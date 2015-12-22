@@ -9,7 +9,9 @@ import Metier.Rdv;
 import Metier.Seance;
 import Metier.Secretaire;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -18,6 +20,18 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("secretaireDao")
 public class SecretaireDaoImpl extends AbstractDao<Integer, Secretaire> implements SecretaireDao{
+
+    @Override
+    public Secretaire findSecretaireById(int id_utilisateur) {
+        Session s = getSession();
+        s.beginTransaction();
+        Criteria criteria = s.createCriteria(Secretaire.class);
+        criteria.add(Restrictions.eq("id_utilisateur",id_utilisateur));
+        Secretaire secretaire = (Secretaire) criteria.uniqueResult();
+        s.getTransaction().commit();
+        s.close();
+        return secretaire;
+    }
 
     @Override
     public void saveSecretaire(Secretaire secretaire) {

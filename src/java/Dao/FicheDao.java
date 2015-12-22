@@ -6,6 +6,7 @@
 package Dao;
 
 import Metier.Fiche;
+import Metier.Medecin;
 import java.util.List;
 
 /**
@@ -13,7 +14,9 @@ import java.util.List;
  * @author soukaina
  */
 public interface FicheDao {
+    Fiche findFicheById(int id_fiche) ;
     Fiche findFicheByIdMedecinAndIdPatient(Metier.Medecin medecinIN,Metier.Patient patientIN);
+    List<Fiche>  fndAllFichesByMedecin(Medecin medecinIN);
     void saveFiche(Fiche fiche);
      
     void updateFiche(Fiche fiche);

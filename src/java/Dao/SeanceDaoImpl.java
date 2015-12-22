@@ -5,11 +5,14 @@
  */
 package Dao;
 
+import Metier.Fiche;
 import Metier.Seance;
+import Metier.Secretaire;
 import Metier.Utilisateur;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -18,6 +21,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("seanceDao")
 public class SeanceDaoImpl extends AbstractDao<Integer, Seance> implements SeanceDao{
+  
+
 
     @Override
     public void SaveCompteRenduSeance(Seance seance) {
@@ -39,9 +44,11 @@ public class SeanceDaoImpl extends AbstractDao<Integer, Seance> implements Seanc
     }
 
     @Override
-    public List<Seance> fndAllCompteRenduSeanceByIdFiche(int id_fiche) {
-            Criteria criteria = getSession().createCriteria(Seance.class);
-    return (List<Seance>) criteria.list();
+    public List<Seance> fndAllCompteRenduSeanceByIdFiche(Fiche ficheIN) {
+        Criteria criteria = getSession().createCriteria(Seance.class);
+        criteria.add(Restrictions.eq("fiche",ficheIN));
+        
+        return (List<Seance>) criteria.list();
     }
     
 }

@@ -8,15 +8,19 @@ package Controller;
 import Dao.FicheDao;
 import Dao.MedecinDao;
 import Dao.PatientDao;
+import Dao.RdvDao;
 import Dao.RdvDaoImpl;
+import Dao.RdvEnAttenteDao;
+import Dao.SecretaireDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import Dao.UtilisateurDao;
-import Metier.Fiche;
 import Metier.Medecin;
 import Metier.Patient;
 import Metier.Rdv;
+import Metier.RdvEnAttente;
+import Metier.Secretaire;
 import org.springframework.beans.factory.annotation.Autowired;
 import Metier.Utilisateur;
 import java.util.Iterator;
@@ -36,12 +40,12 @@ public class AuthentificationController {
     @Autowired
     private UtilisateurDao serviceUtilisateur;
     @Autowired
-    private FicheDao serviceFiche;
+    private SecretaireDao serviceSecretaire;
     @Autowired
-    private PatientDao servicePatient;
+     private RdvDao serviceRdv;
     @Autowired
-     private RdvDaoImpl serviceRdv;
-
+    private RdvEnAttenteDao serviceRdvEnAttente;  
+  
     @RequestMapping(value="/",method=RequestMethod.GET)
     public String showLogin()
     {
@@ -54,27 +58,41 @@ public class AuthentificationController {
             @RequestParam("password") String password,
             HttpSession session)
     {
+        
         Medecin medecin = serviceMedecin.findMedecinById(serviceUtilisateur.findByCompte(login, password).getId_utilisateur());
+        Secretaire secretaire=serviceSecretaire.findSecretaireById(serviceUtilisateur.findByCompte(login, password).getId_utilisateur());
         if(medecin != null)
         {
             session.setAttribute("medecin", medecin);
             session.setAttribute("listFiches", medecin.getFiches());
-            Patient patient = servicePatient.findPatientById(1);
-            Fiche fiche_patient = serviceFiche.findFicheByIdMedecinAndIdPatient(medecin, patient);
-//            for (Iterator<Fiche> iterator = list_fiches.iterator(); iterator.hasNext();) {
-//                Fiche next = iterator.next();
-//                if(next.getPatient().getNom().equals("Ouassmine"))
-//                {
-//                    session.setAttribute("Fiche_amine",next);
-//                }
-//            }
+
             List<Rdv> listRdvs = serviceRdv.findAllRdvByIdMedecin(serviceUtilisateur.findByCompte(login, password).getId_utilisateur());
             session.setAttribute("listRdvs", listRdvs);
-            session.setAttribute("fiche_patient", fiche_patient);
-            return "accueil";
-        }else{
-            return "index";
-        }
+            //List<Fiche> listFiches =serviceFiche.fndAllFichesByMedecin(medecin);
+            //session.setAttribute("listFiches", listFiches);
+            return "accueilMedecin";
+        } else if (secretaire !=null)
+                {     
+                      session.setAttribute("secretaire", secretaire);
+                      Medecin med=secretaire.getMedecin();
+                      int id=med.getId_utilisateur();
+                      List<Rdv> rd=serviceRdv.findAllRdvByIdMedecin(id);
+                      List<RdvEnAttente> rdAttente=serviceRdvEnAttente.findAllRdvEnattenteByIdMedecin(id);
+                      session.setAttribute("rd", rd);
+                      session.setAttribute("rdAttente", rdAttente);
+                     
+                             return "accueilSecretaire";
+                }
+        else{
+                        return "index";
+                       }
+        
+            
+  
+            
+            
+           
+        
     }
     
 }

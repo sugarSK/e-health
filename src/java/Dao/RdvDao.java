@@ -13,7 +13,9 @@ import java.util.List;
  * @author soukaina
  */
 public interface RdvDao  {
+        void SaveRdv(Rdv rdv);
         List<Rdv> findAllRdvByIdMedecin(int id_utilisateur);
         Rdv findRdvById(int id_rdv);
+        Rdv findRdvByDateHeure(String date, String heure) ;
     
 }

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : accueil
-    Created on : 30 nov. 2015, 17:20:48
-    Author     : PC
+    Document   : listSeance
+    Created on : 6 déc. 2015, 00:35:03
+    Author     : soukaina
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -45,7 +45,9 @@
            
             <li class="dropdown">
           
-            <li><a href="index.jsp">Deconnexion</a></li>
+              <li class="dropdown">
+          
+            <li><a href="${pageContext.request.contextPath}/vues/index.jsp">Deconnexion</a></li>
         
             <!-- /.dropdown -->
         </ul>
@@ -59,8 +61,10 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="profil.jsp">Mon Profil<span class="glyphicon glyphicon-book pull-right"></span></a>
-                            <a href="fiches.jsp">Mes fiches de paie<span class="glyphicon glyphicon-book pull-right"></span></a>
+                        <a href="${pageContext.request.contextPath}/vues/accueil.jsp">Mes Rendez vous<span class="glyphicon glyphicon-book pull-right"></span></a>
+                        <a href="${pageContext.request.contextPath}/vues/fiches.jsp">Fiches des patients<span class="glyphicon glyphicon-book pull-right"></span></a>
+                        <a href="${pageContext.request.contextPath}/vues/ordonances.jsp">Ordonance<span class="glyphicon glyphicon-book pull-right"></span></a>
+                        <a href="${pageContext.request.contextPath}/vues/dossier.jsp">Dossier Medical<span class="glyphicon glyphicon-book pull-right"></span></a>
                         </li>
                        
                         
@@ -75,61 +79,46 @@
         <div id="page-wrapper">
                     <div class="col-lg-12">
                   
-                        <h3 class="page-header" class="box-title"><FONT color="red" size="5pt"><strong>Informations Personnelles</strong></FONT> </h3>
-
-                        <div class="col-lg-8">
+                        <h3 class="page-header" class="box-title"><FONT size="5pt"><strong>Comptes Rendus</strong></FONT> </h3>
       
-    
- 
-                                       <div class="box">
-                                       <div class="box-body table-responsive no-padding">
+                        <div class="col-lg-12">
+      
+                 
+                          
                                        <table id="tableau2" class="table table-hover  dataTable" cellspacing="0" width="100%">
                                        <thead>
                                        <tr>
-                                                <th>Numero Rdv</th>
+                                                <th>Numero Seanece</th>
                                                 <th>Date</th>
-                                                <th>Heure</th>
-                                                <th>Nom </th>
-                                                <th>Prenom</th>
-                                                <th>Cause</th>
-                                                <th>Fiche</th>
+                                                <th>Compte Rendu</th>
+                                                <th>Medicaments préscrits </th>
+                                         
                                                
                                         </tr>
                                         </thead>
                                         <tbody>
-                                          <c:forEach var="listRdvs" items="${listRdvs}">
+                                          <c:forEach var="seances" items="${seances}">
                                          <tr>
-                                                <td> <c:out value="${listRdvs.id_rdv}"/></td>                                    
-                                                <td><c:out value="${listRdvs.date}"/></td>
-                                                <td><c:out value="${listRdvs.heure}"/></td>
-                                                <td><c:out value="${listRdvs.patient.nom}"/></td>
-                                                <td><c:out value="${listRdvs.patient.prenom}"/></td>
-                                                <td><c:out value="${listRdvs.cause}"/></td>
-                                                <td><form method="GEt" action="fiche">
-                                                        <input type="submit" class="btn btn-danger"  name="visulaiser" value="Visulaiser " id="${listRdvs.id_rdv}">
-                                                    </form>
-                                                </td>
-                                               
-                                               
-                                            </tr>
+                                                <td> <c:out value="${seances.id_seance}"/></td>                                    
+                                                <td><c:out value="${seances.date}"/></td>
+                                                <td><c:out value="${seances.compte_rendu}"/></td>
+                                                <td><c:out value="${seances.medicament}"/></td>
+                                        </tr>
       
                                          </c:forEach> 
                                     </tbody>
                                     </table>
-
-
-                                </div>
-                            
-                            </div>
-            
-           
-                        
-
-         
-  </div>
+ 
+                          
+                      
+                                    
+                        </div>
+                                  
+                        </div>
         <!-- /#page-wrapper -->
 
-    </div>
+                    </div>
+        </div>
 <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/vues/js/jquery.min.js"></script>
 

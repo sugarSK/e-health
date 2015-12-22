@@ -12,11 +12,11 @@ import Metier.Secretaire;
  * @author soukaina
  */
 public interface SecretaireDao {
-      void saveSecretaire(Secretaire secretaire);
+    void saveSecretaire(Secretaire secretaire);
      
     void updateSecretaire(Secretaire secretaire);
      
     void deleteSecretaire(Secretaire secretaire);
-
+    Secretaire findSecretaireById(int id_utilisateur);
     
 }
