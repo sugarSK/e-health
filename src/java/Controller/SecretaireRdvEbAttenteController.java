@@ -49,10 +49,10 @@ public class SecretaireRdvEbAttenteController {
        return  "SecretaireRdvEnAttente";
    }
     @RequestMapping(value = "/findRdv",method=RequestMethod.POST)
-    public String doFind(@RequestParam("date") String date,@RequestParam("heure")  String heure,
+    public String doFindRdv(@RequestParam("date") String date,@RequestParam("heure")  String heure,
            HttpSession session)
         {
-         Rdv rd= serviceRdv.findRdvByDateHeure(date, heure);
+         Rdv rd= serviceRdv.findRdvByDateHeure(date,heure);
           if(rd != null)
          {   
             session.setAttribute("mess", "Rendez-vous pris!");        

@@ -64,7 +64,7 @@ public class AuthentificationController {
         if(medecin != null)
         {
             session.setAttribute("medecin", medecin);
-            session.setAttribute("listFiches", medecin.getFiches());
+            session.setAttribute("listef", medecin.getFiches());
 
             List<Rdv> listRdvs = serviceRdv.findAllRdvByIdMedecin(serviceUtilisateur.findByCompte(login, password).getId_utilisateur());
             session.setAttribute("listRdvs", listRdvs);
@@ -75,6 +75,7 @@ public class AuthentificationController {
                 {     
                       session.setAttribute("secretaire", secretaire);
                       Medecin med=secretaire.getMedecin();
+                      session.setAttribute("listFiches", med.getFiches());
                       int id=med.getId_utilisateur();
                       List<Rdv> rd=serviceRdv.findAllRdvByIdMedecin(id);
                       List<RdvEnAttente> rdAttente=serviceRdvEnAttente.findAllRdvEnattenteByIdMedecin(id);

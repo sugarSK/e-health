@@ -22,7 +22,7 @@ public class RdvEnAttenteImpl extends AbstractDao<Integer, RdvEnAttenteDao> impl
     @Override
     public List<RdvEnAttente> findAllRdvEnattenteByIdMedecin(int id_utilisateur) {
            Criteria criteria = getSession().createCriteria(RdvEnAttente.class);
-           criteria.add(Restrictions.eq("id_utilisateur",id_utilisateur));
+           //criteria.add(Restrictions.eq("id_utilisateur",id_utilisateur));
         return (List<RdvEnAttente>) criteria.list();
     }
 

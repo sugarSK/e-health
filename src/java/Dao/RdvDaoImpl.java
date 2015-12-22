@@ -23,7 +23,7 @@ public class RdvDaoImpl extends AbstractDao<Integer, Rdv> implements RdvDao{
     @Override
     public List<Rdv> findAllRdvByIdMedecin(int id_utilisateur) {
            Criteria criteria = getSession().createCriteria(Rdv.class);
-           criteria.add(Restrictions.eq("id_utilisateur",id_utilisateur));
+           //criteria.add(Restrictions.eq("id_utilisateur",id_utilisateur));
         return (List<Rdv>) criteria.list();
     }
        
