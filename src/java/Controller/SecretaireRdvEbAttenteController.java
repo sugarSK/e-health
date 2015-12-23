@@ -7,8 +7,6 @@ package Controller;
 
 import Dao.RdvDao;
 import Dao.RdvEnAttenteDao;
-import Metier.Medecin;
-import Metier.Patient;
 import Metier.Rdv;
 import Metier.RdvEnAttente;
 import Metier.Secretaire;
@@ -26,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author soukaina
  */
 @Controller
- @RequestMapping(value = "/vues")
+
 public class SecretaireRdvEbAttenteController {
     @Autowired
     private RdvEnAttenteDao serviceRdvAttente;
@@ -42,28 +40,26 @@ public class SecretaireRdvEbAttenteController {
        rdv.setHeure(ra.getHeure());
        rdv.setMedecin(ra.getMedecin());
        rdv.setPatient(ra.getPatient());
-       serviceRdv.SaveRdv(rdv);
-       List<Rdv> rd=serviceRdv.findAllRdvByMedecin(ra.getMedecin());
-       
-       if(rdv != null)
-       {
-         session.setAttribute("mess"," Rdv Confirmer");
-       } else{session.setAttribute("mess"," Rdv non Confirmer");}
-       
-       return  "SecretaireRdvEnAttente";
+        try {
+            serviceRdv.SaveRdv(rdv);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.setAttribute("errorMsg", "Deja confirme");
+            return  "SecretaireRdvEnAttente";
+        }
+        List<Rdv> rd=serviceRdv.findAllRdvByMedecin(ra.getMedecin());
+        return "accueilSecretaire";
+        
    }
     @RequestMapping(value = "/findRdv",method=RequestMethod.POST)
     public String FindRdv(@RequestParam("date") String date,@RequestParam("heure")  String heure,
            HttpSession session)
         {
          Rdv rdvss= serviceRdv.findRdvByDateHeure(date,heure);
-         //mky reccuperech men formulaire date et heure je ne sais pas pourquoi fach jerebt dert en param 11h..
-         //ktkhem methode wla mchiti l secretairerdvenattente atl9ani dyra  <c:out value="${rdvss1.id_rdv}"/><c:out value="${date}"/> mora button search rdvss1.id_rdv at2afficher num d id w date la
-                                                   
-         Rdv rdvss1= serviceRdv.findRdvByDateHeure("20-12-2015","11h");
+     
          session.setAttribute("rdvss", rdvss);
-         session.setAttribute("rdvss1", rdvss1);
-          session.setAttribute("date", date);
+     
           if(rdvss != null)
          {   
             session.setAttribute("mess", "Rendez-vous pris!");        

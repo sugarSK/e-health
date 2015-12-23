@@ -39,7 +39,7 @@
                         <h3 class="panel-title">Connectez-vous</h3>
                     </div>
                     <div class="panel-body">
-                        <form  action="doLogin" role="form" method="POST">
+                        <form  action="doLogin" role="form" method="post">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Login" name="login" type="text" autofocus>

@@ -76,6 +76,10 @@
                     <div class="col-lg-12">
                   
                     <h3 class="page-header" class="box-title"><FONT  size="5pt"><strong>rendez vous à confirmer</strong></FONT> </h3>
+                    
+                    <div class="alert alert-warning">
+                      ${errorMsg}
+                    </div>
                     <div class="row">
               
                     <div class="col-lg-8 text-center">
@@ -104,8 +108,8 @@
                                                 <td><c:out value="${rdAttente.patient.id_utilisateur}"/></td>
                                                 <td><c:out value="${rdAttente.patient.nom}"/></td>
                                                 <td><c:out value="${rdAttente.patient.prenom}"/></td>
-                                                <td><a class="btn btn-warning" href="<c:url value="/vues/ConfirmerRdvAttente/${rdAttente.id_rdv_attente}"/>">Confirmer</a></td>
-                                                <td><a class="btn btn-warning" href="<c:url value="/vues/DeleteRdvAttente/${rdAttente.id_rdv_attente}"/>">Supprimer</a></td>
+                                                <td><a class="btn btn-warning" href="<c:url value="/ConfirmerRdvAttente/${rdAttente.id_rdv_attente}"/>">Confirmer</a></td>
+                                                <td><a class="btn btn-warning" href="<c:url value="//DeleteRdvAttente/${rdAttente.id_rdv_attente}"/>">Supprimer</a></td>
   
                                          </tr>
       
@@ -135,8 +139,7 @@
                                                      <input type="submit"  value="search" class="btn btn-group-sm btn-warning"/>
                                                  </form>
                                                      
-                                                     <c:out value="${rdvss1.id_rdv}"/>
-                                                    <c:out value="${date}"/>
+       
                                            </div>
                                      </p>
                                 </div>

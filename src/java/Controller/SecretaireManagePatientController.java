@@ -13,7 +13,11 @@ import Metier.Medecin;
 import Metier.Patient;
 import Metier.Rdv;
 import Metier.Secretaire;
+import Metier.Utilisateur;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,30 +32,28 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author soukaina
  */
 @Controller
- @RequestMapping(value = "/vues")
+ 
 public class SecretaireManagePatientController {
     
- @Autowired
- PatientDao servicePatient;
- @Autowired
-  FicheDao serviceFiche;  
-  @Autowired
-  RdvDao serviceRdv;  
- @RequestMapping(value = "/find",method=RequestMethod.POST)
- public String doFind(@RequestParam("id_utilisateur") int id_utilisateur,
-            HttpSession session)
- {
-     Fiche pat= serviceFiche.findFicheById(id_utilisateur);
-        if(pat != null)
-        {   
-            session.setAttribute("message", "Patient existant!");        
-        } else {
-             session.setAttribute("message", "1ere rendez vous!");
-        }
-           
+    @Autowired
+    PatientDao servicePatient;
+    @Autowired
+    FicheDao serviceFiche;  
+    @Autowired
+    RdvDao serviceRdv;  
 
-     return "accueilSecretaire";
+    @RequestMapping(value = "/find",method=RequestMethod.POST)
+    public String doFind(@RequestParam("id_utilisateur") int id_utilisateur,HttpSession session)
+    {   
+        Fiche pat= serviceFiche.findFicheById(id_utilisateur);
+        if(pat != null){   
+            session.setAttribute("message", "Patient existant!");        
+        }else{
+            session.setAttribute("message", "1ere rendez vous!");
         }
+        return "accueilSecretaire";
+    }
+    
    @RequestMapping(value = "/addPatient/{id_rdv}",method=RequestMethod.GET)
    public String  addPatient(@PathVariable("id_rdv") int id_rdv,
            HttpSession session){
@@ -62,15 +64,17 @@ public class SecretaireManagePatientController {
        Fiche fic=new Fiche();
        fic.setPatient(p);
        fic.setMedecin(m);
-       serviceFiche.saveFiche(fic);
-       List<Fiche> f=m.getFiches();
-       session.getAttribute("listFiches");
-       if(fic != null)
-       {
-           session.setAttribute("message"," Fiche crée");
-       } else{session.setAttribute("message"," Fiche non crée");}
+       try{
+           serviceFiche.saveFiche(fic);
+       }catch(Exception e){
+           e.printStackTrace();
+           session.setAttribute("msg", "Fiche Existante !");
+           return  "accueilSecretaire";
+       }
+           List<Fiche> f=m.getFiches();
+           session.getAttribute("listFiches");
+           return  "secretaireAllFichesPatient";
        
-       return  "secretaireAllFichesPatient";
    }
 
     

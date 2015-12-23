@@ -4,6 +4,10 @@
     Author     : Soukaina
 --%>
 
+<%@page import="Dao.FicheDaoImpl"%>
+<%@page import="Dao.FicheDao"%>
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
+<%@page import="Metier.Fiche"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -28,6 +32,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
         <title>Authentification</title>
     </head>
      <body>
@@ -77,6 +82,10 @@
                     <div class="col-lg-12">
                   
                     <h3 class="page-header" class="box-title"><FONT  size="5pt"><strong>rendez vous</strong></FONT> </h3>
+                    
+                    <div class="alert alert-warning">
+                        <c:out value="${msg}"/>
+                    </div>
                     <div class="row">
               
                     <div class="col-lg-8 text-center">
@@ -91,21 +100,21 @@
                                                 <th>Nom </th>
                                                 <th>Prenom</th>
                                                 <th>Ajouter</th>
-
                                                
                                         </tr>
                                         </thead>
                                         <tbody>
                                           <c:forEach var="rd" items="${rd}">
                                          <tr>
-                                                <td> <c:out value="${rd.id_rdv}"/></td>                                    
+                                                <td><c:out value="${rd.id_rdv}"/></td>                                    
                                                 <td><c:out value="${rd.date}"/></td>
                                                 <td><c:out value="${rd.heure}"/></td>
                                                 <td><c:out value="${rd.patient.id_utilisateur}"/></td>
                                                 <td><c:out value="${rd.patient.nom}"/></td>
                                                 <td><c:out value="${rd.patient.prenom}"/></td>
+                                               
                                                 <td><a class="btn btn-warning" href="<c:url value="/addPatient/${rd.id_rdv}"/>">Add</a></td>
-                                            </tr>
+                                        </tr>
       
                                          </c:forEach> 
                                     </tbody>
