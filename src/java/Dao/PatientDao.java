@@ -6,6 +6,7 @@
 package Dao;
 
 import Metier.Patient;
+import java.util.List;
 
 /**
  *
@@ -19,7 +20,9 @@ public interface PatientDao {
      
         void updatePatient(Patient patient);
      
-       void deletePatient(Patient patient);
+        void deletePatient(Patient patient);
+        
+        List<Patient> findAllPatient( );
      
     
     

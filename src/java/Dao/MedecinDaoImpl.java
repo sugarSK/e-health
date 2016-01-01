@@ -6,6 +6,8 @@
 package Dao;
 
 import Metier.Medecin;
+import Metier.Rdv;
+import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -56,5 +58,10 @@ public class MedecinDaoImpl extends AbstractDao<Integer, Medecin> implements Med
         s.getTransaction().commit();
         s.close();
     }
-    
+    @Override
+    public List<Medecin> findAllMedecin( ) {
+           Criteria criteria = getSession().createCriteria(Medecin.class);
+        return (List<Medecin>) criteria.list();
+    }
+       
 }

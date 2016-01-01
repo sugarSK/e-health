@@ -61,4 +61,10 @@ public class RdvDaoImpl extends AbstractDao<Integer, Rdv> implements RdvDao{
         s.close();
         return rd;
     }
+
+    @Override
+    public List<Rdv> findAllRdv() {
+           Criteria criteria = getSession().createCriteria(Rdv.class);
+           return (List<Rdv>) criteria.list();
+    }
 }

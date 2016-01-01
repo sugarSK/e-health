@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author soukaina
  */
 @Controller
-public class ShowMedecinController {
+public class ShowMedecinMenuController {
         @RequestMapping(value="/accueilMedecin",method=RequestMethod.GET)
     public String showAccueilSecretaire()
     {

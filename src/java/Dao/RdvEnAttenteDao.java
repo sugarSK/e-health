@@ -20,5 +20,5 @@ public interface RdvEnAttenteDao {
       RdvEnAttente findRdvEnAttenteById(int id_rdv_attente);
       RdvEnAttente findRdvEnAttenteByDateHeure(String date,String heure);
       void deleteRdvEnAttente(RdvEnAttente rdv);
-    
+      void SaveRdvEnattente(RdvEnAttente rdv);
 }

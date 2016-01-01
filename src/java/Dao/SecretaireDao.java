@@ -6,6 +6,7 @@
 package Dao;
 
 import Metier.Secretaire;
+import java.util.List;
 
 /**
  *
@@ -13,9 +14,8 @@ import Metier.Secretaire;
  */
 public interface SecretaireDao {
     void saveSecretaire(Secretaire secretaire);
-     
+    List<Secretaire> findAllSecretaire( );
     void updateSecretaire(Secretaire secretaire);
-     
     void deleteSecretaire(Secretaire secretaire);
     Secretaire findSecretaireById(int id_utilisateur);
     

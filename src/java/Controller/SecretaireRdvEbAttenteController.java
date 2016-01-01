@@ -25,13 +25,13 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 
-public class SecretaireRdvEbAttenteController {
+    public class SecretaireRdvEbAttenteController {
     @Autowired
     private RdvEnAttenteDao serviceRdvAttente;
     @Autowired
     private RdvDao serviceRdv;
     @RequestMapping(value = "/ConfirmerRdvAttente/{id_rdv_attente}",method=RequestMethod.GET)
-   public String  ConfirmeRdv(@PathVariable("id_rdv_attente") int id_rdv_attente,
+    public String  ConfirmeRdv(@PathVariable("id_rdv_attente") int id_rdv_attente,
        HttpSession session){
        RdvEnAttente ra=serviceRdvAttente.findRdvEnAttenteById(id_rdv_attente);
        Rdv rdv=new Rdv();
@@ -49,6 +49,8 @@ public class SecretaireRdvEbAttenteController {
             return  "SecretaireRdvEnAttente";
         }
         List<Rdv> rd=serviceRdv.findAllRdvByMedecin(ra.getMedecin());
+        session.setAttribute("rd", rd);
+
         return "accueilSecretaire";
         
    }

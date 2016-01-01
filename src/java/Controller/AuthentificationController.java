@@ -95,13 +95,7 @@ public class AuthentificationController {
     {
         return "index";
     }
-   @RequestMapping(value = "/testamine",method =RequestMethod.GET)
-   @ResponseBody
-    public String test()
-    {
-         Rdv rd= serviceRdv.findRdvByDateHeure("20-12-2015", "11h");
-        return rd.toString();
-    }
+}
   
     
-}
+

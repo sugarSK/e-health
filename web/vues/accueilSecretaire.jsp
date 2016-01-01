@@ -67,7 +67,9 @@
                             <a href="${pageContext.request.contextPath}/accueilSecretaire"> Rendez vous<span class="glyphicon glyphicon-book pull-right"></span></a>
                             <a href="${pageContext.request.contextPath}/secretaireAllFichesPatient">Fiches des patients<span class="glyphicon glyphicon-book pull-right"></span></a>
                             <a href="${pageContext.request.contextPath}/SecretaireRdvEnAttente">Rdv en attente<span class="glyphicon glyphicon-book pull-right"></span></a>
-                        </li>
+                            <a href="${pageContext.request.contextPath}/SecretaireEmailForm">Send Email<span class="glyphicon glyphicon-book pull-right"></span></a>
+
+                         </li>
                                            
                         
                        

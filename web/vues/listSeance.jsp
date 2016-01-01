@@ -90,7 +90,7 @@
                                                 <th>Date</th>
                                                 <th>Compte Rendu</th>
                                                 <th>Medicaments préscrits </th>
-                                         
+                                                <th> Ordonnance </th>
                                                
                                         </tr>
                                         </thead>
@@ -100,7 +100,8 @@
                                                 <td> <c:out value="${seances.id_seance}"/></td>                                    
                                                 <td><c:out value="${seances.date}"/></td>
                                                 <td><c:out value="${seances.compte_rendu}"/></td>
-                                                <td><c:out value="${seances.medicament}"/></td>
+                                                 <td><c:out value="${seances.medicament}"/></td>
+                                                <td><a class="btn btn-warning" href="<c:url value="/ordonnance/${seances.id_seance}" />" >Génerer</a></td>
                                         </tr>
       
                                          </c:forEach> 

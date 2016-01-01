@@ -13,6 +13,8 @@ import Dao.RdvDao;
 import Dao.SeanceDao;
 import Dao.SecretaireDao;
 import Dao.SpecialiteDao;
+import Dao.SpecialiteDaoImpl;
+import ExcelReadFile.ExcellReadSpecialite;
 import Metier.Admin;
 import Metier.Fiche;
 import Metier.Medecin;
@@ -21,6 +23,7 @@ import Metier.Rdv;
 import Metier.Seance;
 import Metier.Secretaire;
 import Metier.Specialite;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,9 +54,11 @@ public class testController {
     private FicheDao serviceFiche;
     @Autowired
     private SeanceDao serviceSEance;
+    @Autowired
+    private AdminDao serviceAdmine;
     @RequestMapping(value="/test",method=RequestMethod.GET)
     @ResponseBody
-    public String test()
+    public String test() throws IOException
     {
       /*  Admin admin_1 = new Admin();
         admin_1.setLogin("ROOT");
@@ -84,7 +89,7 @@ public class testController {
         servicePatient.updatePatient(patient);
         
         Patient patient2 = new Patient();
-         patient2.setNom("soukaina");
+        patient2.setNom("soukaina");
         patient2.setPrenom("soukaina");
         patient2.setAdresse("bm");
         patient2.setDate_naissance("03-12-1992");
@@ -186,9 +191,10 @@ public class testController {
             
         
         */
-            Medecin medecin = serviceMedecin.findMedecinById(2);
-           Rdv rd= serviceRdv.findRdvByDateHeure("20-12-2015", "11h");
-        return rd.toString();
+         Secretaire m=serviceSecretaire.findSecretaireById(3);
+           m.setPrenom("Fatine");
+           serviceSecretaire.updateSecretaire(m);
+        return m.toString();
             
     }
 }

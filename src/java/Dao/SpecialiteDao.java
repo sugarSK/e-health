@@ -6,6 +6,7 @@
 package Dao;
 
 import Metier.Specialite;
+import java.util.List;
 
 /**
  *
@@ -13,8 +14,9 @@ import Metier.Specialite;
  */
 public interface SpecialiteDao {
     void saveSpecialite(Specialite specialite);
-     
     void updateSpecialite(Specialite specialite);
-     
     void deleteSpecialite(Specialite specialite);
+    Specialite findSpecialiteById(int id_specialite);
+    List<Specialite> fndAllSpecialite();
+    List<Specialite> fndAllSpecialiteById(int id_specialite);
 }

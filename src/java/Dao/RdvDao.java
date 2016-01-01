@@ -16,6 +16,7 @@ import java.util.List;
 public interface RdvDao  {
         void SaveRdv(Rdv rdv);
         List<Rdv> findAllRdvByMedecin(Medecin medecin);
+        List<Rdv> findAllRdv();
         Rdv findRdvById(int id_rdv);
         Rdv findRdvByDateHeure(String date, String heure) ;
     

@@ -31,4 +31,9 @@ public class ShowSecretaireMenuController {
     {
         return "secretaireAllFichesPatient";
     }
+        @RequestMapping(value="/SecretaireEmailForm",method=RequestMethod.GET)
+    public String ShowSecretaireEmailForm()
+    {
+        return "SecretaireEmailForm";
+    }
 }

@@ -17,6 +17,6 @@ public interface SeanceDao  {
     void SaveCompteRenduSeance(Seance seance);
     void UpdateCompteRenduSeance(Seance seance);
     List<Seance> fndAllCompteRenduSeanceByIdFiche(Fiche f);
-           
+    List<Seance> fndAllCompteRenduSeance();           
     
 }

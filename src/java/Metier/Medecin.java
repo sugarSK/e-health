@@ -70,4 +70,6 @@ import org.hibernate.annotations.LazyCollectionOption;
     public String toString() {
         return "Medecin{" + "specialite=" + specialite  + ", admin=" + admin + '}'+super.toString();
     } 
+
+  
 }

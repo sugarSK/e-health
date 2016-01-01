@@ -11,11 +11,10 @@ import Metier.Admin;
  */
 public interface AdminDao {
     void saveAdmin(Admin admin);
-     
     void updateAdmin(Admin admin);
-     
     void deleteAdmin(Admin admin);
     Admin findAdminById(int id_admin);
+    Admin findAdminByCompte(String login, String passsword);
 
 
 }

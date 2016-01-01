@@ -63,7 +63,7 @@ public class FicheDaoImpl extends AbstractDao<Integer, Fiche> implements FicheDa
 
     @Override
     public void deleteFiche(Fiche fiche) {
-             Session s = getSession();
+        Session s = getSession();
         s.beginTransaction();
         s.delete(fiche);
         s.getTransaction().commit();

@@ -89,7 +89,7 @@
                              <div class="col-lg-8 text-center">
                                   
                                    <div class="panel-body">
-                                                                          <div class="panel panel-warning">
+                                 <div class="panel panel-warning">
                             <div class="panel-heading">
                                 <h3 class="panel-title"> Numéro:${fiche.id_fiche}</h3>
                             </div>
@@ -132,7 +132,7 @@
                                    </div>
                                 </div>
                          </div>  
-    <div class="row">
+                <div class="row">
                     <div class="col-lg-3 ">
                         <div class="panel-body">
                                      

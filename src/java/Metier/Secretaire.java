@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -26,16 +28,22 @@ public class Secretaire extends Utilisateur implements Serializable{
      private Admin admin;
      private Medecin medecin;
 
-@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
   @JoinColumn(name="id_admin")
     public Admin getAdmin() {
         return admin;
     }
 
+
+
     public void setAdmin(Admin admin) {
         this.admin = admin;
     }
-@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
   @JoinColumn(name="id_utilisateur_medecin")
     public Medecin getMedecin() {
         return medecin;

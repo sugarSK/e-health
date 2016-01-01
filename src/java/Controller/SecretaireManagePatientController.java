@@ -71,8 +71,8 @@ public class SecretaireManagePatientController {
            session.setAttribute("msg", "Fiche Existante !");
            return  "accueilSecretaire";
        }
-           List<Fiche> f=m.getFiches();
-           session.getAttribute("listFiches");
+           List<Fiche> listFiches=m.getFiches();
+           session.setAttribute("listFiches",listFiches);
            return  "secretaireAllFichesPatient";
        
    }

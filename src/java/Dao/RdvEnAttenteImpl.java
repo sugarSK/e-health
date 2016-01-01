@@ -7,6 +7,7 @@ package Dao;
 
 import Metier.Admin;
 import Metier.Medecin;
+import Metier.Rdv;
 import Metier.RdvEnAttente;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -60,5 +61,13 @@ public class RdvEnAttenteImpl extends AbstractDao<Integer, RdvEnAttenteDao> impl
         s.getTransaction().commit();
         s.close();
     }
+    @Override
+    public void SaveRdvEnattente(RdvEnAttente rdv) {
+        Session s = getSession();
+        s.beginTransaction();
+        s.save(rdv);
+        s.getTransaction().commit();
+        s.close();
 
+    }
 }

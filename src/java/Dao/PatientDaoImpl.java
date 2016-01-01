@@ -5,8 +5,10 @@
  */
 package Dao;
 
+import Metier.Medecin;
 import Metier.Patient;
 import Metier.Utilisateur;
+import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -59,6 +61,12 @@ public class PatientDaoImpl extends AbstractDao<Integer, Patient> implements Pat
         s.delete(patient);
         s.getTransaction().commit();
         s.close();
+    }
+
+    @Override
+    public List<Patient> findAllPatient() {
+         Criteria criteria = getSession().createCriteria(Patient.class);
+        return (List<Patient>) criteria.list();
     }
     
 }

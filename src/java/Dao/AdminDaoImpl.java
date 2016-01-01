@@ -57,4 +57,17 @@ public class AdminDaoImpl extends AbstractDao<Integer, Admin> implements AdminDa
         return admin;
     
 }
+    @Override
+    public Admin findAdminByCompte(String login, String passsword) {
+        Session s = getSession();
+        s.beginTransaction();
+        Criteria criteria = s.createCriteria(Admin.class);
+        criteria.add(Restrictions.eq("login",login));
+        criteria.add(Restrictions.eq("password", passsword));
+        Admin admin = (Admin) criteria.uniqueResult();
+        s.getTransaction().commit();
+        s.close();
+        return admin;
+    }
+
 }

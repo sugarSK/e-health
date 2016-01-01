@@ -5,6 +5,8 @@
  */
 package Dao;
 
+import Metier.Admin;
+import Metier.Medecin;
 import Metier.Rdv;
 import Metier.Seance;
 import Metier.Secretaire;
@@ -45,7 +47,7 @@ public class SecretaireDaoImpl extends AbstractDao<Integer, Secretaire> implemen
 
     @Override
     public void updateSecretaire(Secretaire secretaire) {
-         Session s = getSession();
+        Session s = getSession();
         s.beginTransaction();
         s.update(secretaire);
         s.getTransaction().commit();
@@ -61,8 +63,10 @@ public class SecretaireDaoImpl extends AbstractDao<Integer, Secretaire> implemen
         s.close();
     }
 
-   
-
   
-    
+     @Override
+    public List<Secretaire> findAllSecretaire( ) {
+           Criteria criteria = getSession().createCriteria(Secretaire.class);
+        return (List<Secretaire>) criteria.list();
+    }
 }

@@ -62,7 +62,9 @@
                             <a href="${pageContext.request.contextPath}/accueilSecretaire"> Rendez vous<span class="glyphicon glyphicon-book pull-right"></span></a>
                             <a href="${pageContext.request.contextPath}/secretaireAllFichesPatient">Fiches des patients<span class="glyphicon glyphicon-book pull-right"></span></a>
                             <a href="${pageContext.request.contextPath}/SecretaireRdvEnAttente">Rdv en attente<span class="glyphicon glyphicon-book pull-right"></span></a>
-                        </li>
+                            <a href="${pageContext.request.contextPath}/SecretaireEmailForm">Send Email<span class="glyphicon glyphicon-book pull-right"></span></a>
+                        
+                         </li>
                         
                        
                     </ul>
@@ -109,7 +111,7 @@
                                                 <td><c:out value="${rdAttente.patient.nom}"/></td>
                                                 <td><c:out value="${rdAttente.patient.prenom}"/></td>
                                                 <td><a class="btn btn-warning" href="<c:url value="/ConfirmerRdvAttente/${rdAttente.id_rdv_attente}"/>">Confirmer</a></td>
-                                                <td><a class="btn btn-warning" href="<c:url value="//DeleteRdvAttente/${rdAttente.id_rdv_attente}"/>">Supprimer</a></td>
+                                                <td><a class="btn btn-warning" href="<c:url value="/DeleteRdvAttente/${rdAttente.id_rdv_attente}"/>">Supprimer</a></td>
   
                                          </tr>
       
